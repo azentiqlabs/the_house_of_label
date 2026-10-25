@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  IN_PROGRESS
+  COMPLETED
+  SPAM
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("ADMIN")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+model PageContent {
+  id             String        @id @default(cuid())
+  sectionKey     String        @unique
+  title          String
+  subtitle       String?       @db.Text
+  description    String?       @db.Text
+  imageUrl       String?
+  buttonText     String?
+  buttonUrl      String?
+  status         ContentStatus @default(DRAFT)
+  seoTitle       String?
+  seoDescription String?       @db.Text
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model ProductCategory {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id               String          @id @default(cuid())
+  name             String
+  slug             String          @unique
+  shortDescription String?         @db.Text
+  description      String?         @db.Text
+  imageUrl         String?
+  gallery          String[]        @default([])
+  status           ContentStatus   @default(DRAFT)
+  featured         Boolean         @default(false)
+  seoTitle         String?
+  seoDescription   String?         @db.Text
+  categoryId       String
+  category         ProductCategory @relation(fields: [categoryId], references: [id])
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model Machine {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?       @db.Text
+  imageUrl    String?
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Industry {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?       @db.Text
+  imageUrl    String?
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model GalleryItem {
+  id        String   @id @default(cuid())
+  title     String
+  imageUrl  String
+  category  String
+  altText   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model CustomerBrand {
+  id        String   @id @default(cuid())
+  name      String
+  logoUrl   String
+  website   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model QuoteInquiry {
+  id           String        @id @default(cuid())
+  name         String
+  company      String?
+  email        String
+  phone        String
+  productType  String?
+  requirements String        @db.Text
+  status       InquiryStatus @default(NEW)
+  adminNotes   String?       @db.Text
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model SeoPage {
+  id           String   @id @default(cuid())
+  path         String   @unique
+  title        String
+  description  String   @db.Text
+  canonicalUrl String?
+  ogImageUrl   String?
+  noIndex      Boolean  @default(false)
+  updatedAt    DateTime @updatedAt
+}
