@@ -14,6 +14,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+}
+
 enum ContentStatus {
   DRAFT
   PUBLISHED
@@ -32,7 +38,7 @@ model AdminUser {
   name         String
   email        String   @unique
   passwordHash String
-  role         String   @default("ADMIN")
+  role         AdminRole @default(ADMIN)
   isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -52,6 +58,7 @@ model PageContent {
   subtitle       String?       @db.Text
   description    String?       @db.Text
   imageUrl       String?
+  sortOrder      Int           @default(0)
   buttonText     String?
   buttonUrl      String?
   status         ContentStatus @default(DRAFT)
@@ -82,6 +89,9 @@ model Product {
   featured         Boolean         @default(false)
   seoTitle         String?
   seoDescription   String?         @db.Text
+  canonicalUrl     String?
+  ogImageUrl       String?
+  noIndex          Boolean         @default(false)
   categoryId       String
   category         ProductCategory @relation(fields: [categoryId], references: [id])
   createdAt        DateTime        @default(now())
@@ -94,6 +104,11 @@ model Machine {
   slug        String        @unique
   description String?       @db.Text
   imageUrl    String?
+  seoTitle    String?
+  seoDescription String? @db.Text
+  canonicalUrl String?
+  ogImageUrl String?
+  noIndex Boolean @default(false)
   status      ContentStatus @default(DRAFT)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
@@ -105,6 +120,11 @@ model Industry {
   slug        String        @unique
   description String?       @db.Text
   imageUrl    String?
+  seoTitle    String?
+  seoDescription String? @db.Text
+  canonicalUrl String?
+  ogImageUrl String?
+  noIndex Boolean @default(false)
   status      ContentStatus @default(DRAFT)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
@@ -119,6 +139,7 @@ model GalleryItem {
   sortOrder Int      @default(0)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CustomerBrand {
@@ -129,6 +150,7 @@ model CustomerBrand {
   sortOrder Int      @default(0)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model QuoteInquiry {
