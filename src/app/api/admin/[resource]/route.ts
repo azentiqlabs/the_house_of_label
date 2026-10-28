@@ -55,11 +55,12 @@ export async function GET(req: NextRequest, { params }: Ctx) {
         where,
         skip: (page - 1) * limit,
         take: limit,
-        orderBy: {
-          [resource === "settings" || resource === "seo"
-            ? "updatedAt"
-            : "createdAt"]: "desc",
-        },
+        orderBy:
+          resource === "settings" || resource === "seo"
+            ? { updatedAt: "desc" }
+            : resource === "gallery" || resource === "brands" || resource === "pages"
+              ? { sortOrder: "asc" }
+              : { createdAt: "desc" },
         ...(includeFor[resource as ResourceKey]
           ? { include: includeFor[resource as ResourceKey] }
           : {}),

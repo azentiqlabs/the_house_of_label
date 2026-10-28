@@ -1,32 +1,27 @@
 import Link from "next/link";
-import { navLinks, siteConfig } from "@/lib/site";
 
-export function Footer() {
+type Props = { settings: Record<string, string> };
+
+export function Footer({ settings }: Props) {
+  const siteName = settings.site_name || "The House of Labels";
+  const tagline = settings.site_tagline || "LABELS THAT RUN BETTER";
+  const note = settings.footer_note || "All rights reserved.";
+
   return (
-    <footer className="bg-[#071b31] py-8 text-white">
-      <div className="container flex flex-col justify-between gap-6 md:flex-row md:items-center">
-        <Link href="/" className="text-sm font-extrabold">
-          {siteConfig.name}
-          <span className="mt-1 block text-[9px] tracking-[.2em] text-slate-300">
-            LABELS THAT YOU BETTER
-          </span>
+    <footer className="footer">
+      <div className="container footer-inner">
+        <Link href="/#home" className="brand" aria-label={`${siteName} home`}>
+          <span className="brand-mark">H</span>
+          <span className="brand-name">{siteName}<small>{tagline}</small></span>
         </Link>
-        <nav className="flex flex-wrap gap-4">
-          {navLinks
-            .filter((x) => x.href !== "/")
-            .map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-xs text-slate-200 hover:text-orange-300"
-              >
-                {link.label}
-              </Link>
-            ))}
-        </nav>
-        <p className="text-xs text-slate-300">
-          © {new Date().getFullYear()} The House of Labels.
-        </p>
+        <div className="footer-links">
+          <a href="/#about">About</a>
+          <a href="/#products">Products</a>
+          <a href="/#machines">Machines</a>
+          <a href="/#industries">Industries</a>
+          <a href="/#contact">Contact</a>
+        </div>
+        <span>© {new Date().getFullYear()} {siteName}. {note}</span>
       </div>
     </footer>
   );

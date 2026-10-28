@@ -7,14 +7,15 @@ const slug = z
   .min(1)
   .max(160)
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-const url = z
+const assetPath = z
   .string()
   .trim()
-  .url()
   .max(2048)
-  .or(z.literal(""))
-  .optional()
-  .nullable();
+  .refine(
+    (value) => value === "" || /^(https?:\/\/|\/|#|mailto:|tel:)/i.test(value),
+    "Enter a full URL or a site-relative path (for example, /theme/image.png).",
+  );
+const url = assetPath.optional().nullable();
 export const schemas = {
   products: z.object({
     name: text(160).min(1),
@@ -22,7 +23,7 @@ export const schemas = {
     shortDescription: optionalText(500),
     description: optionalText(),
     imageUrl: url,
-    gallery: z.array(z.string().trim().url()).max(30).default([]),
+    gallery: z.array(assetPath).max(30).default([]),
     status: z.enum(["DRAFT", "PUBLISHED"]).default("DRAFT"),
     featured: z.boolean().default(false),
     seoTitle: optionalText(70),
@@ -59,7 +60,7 @@ export const schemas = {
   }),
   gallery: z.object({
     title: text(160).min(1),
-    imageUrl: z.string().trim().url(),
+    imageUrl: assetPath.refine((value) => value.length > 0, "Image URL is required."),
     category: text(100).min(1),
     altText: optionalText(250),
     sortOrder: z.coerce.number().int().min(0).default(0),
@@ -67,7 +68,7 @@ export const schemas = {
   }),
   brands: z.object({
     name: text(160).min(1),
-    logoUrl: z.string().trim().url(),
+    logoUrl: assetPath.refine((value) => value.length > 0, "Logo URL is required."),
     website: url,
     sortOrder: z.coerce.number().int().min(0).default(0),
     isActive: z.boolean().default(true),

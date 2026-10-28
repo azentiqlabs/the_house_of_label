@@ -9,14 +9,15 @@
     "lint": "eslint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "admin:create": "tsx scripts/create-admin.ts"
+    "admin:create": "tsx scripts/create-admin.ts",
+    "cms:seed": "tsx scripts/seed-theme.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "bcryptjs": "^3.0.3",
     "dotenv": "^18.0.9",
     "jose": "^6.2.13",
-    "lucide-react": "^1.61.0",
+    "lucide-react": "^1.63.0",
     "next": "16.4.2",
     "pg": "^8.23.1",
     "react": "19.3.0",

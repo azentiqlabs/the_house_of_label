@@ -1,40 +1,32 @@
+import type { Metadata } from "next";
+import { HomePage } from "@/components/website/homepage";
+import { getHomeData } from "@/lib/home-content";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
-import { ProductCard } from "@/components/website/product-card";
-export const metadata = buildMetadata(
-  "Products",
-  "Explore printed, unprinted, thermal and specialty label solutions.",
-);
-export default async function ProductsPage() {
-  let products: any[] = [];
+import { siteConfig } from "@/lib/site";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getHomeData();
+  let seo: { title: string; description: string; canonicalUrl: string | null; ogImageUrl: string | null; noIndex: boolean } | null = null;
   try {
-    products = await prisma.product.findMany({
-      where: { status: "PUBLISHED" },
-      include: { category: true },
-      orderBy: { createdAt: "desc" },
-    });
-  } catch {}
-  return (
-    <section className="section bg-slate-50">
-      <div className="container">
-        <p className="eyebrow">Explore our range</p>
-        <h1 className="section-title mt-3">Our Products</h1>
-        <p className="muted mt-3 max-w-2xl">
-          Label solutions for diverse applications and packaging needs.
-        </p>
-        {products.length ? (
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        ) : (
-          <p className="mt-8 rounded-xl bg-white p-8 text-slate-500">
-            No published products yet. Add products through the admin workflow
-            once it is configured.
-          </p>
-        )}
-      </div>
-    </section>
-  );
+    seo = await prisma.seoPage.findUnique({ where: { path: "/" }, select: { title: true, description: true, canonicalUrl: true, ogImageUrl: true, noIndex: true } });
+  } catch {
+    // The public page still renders with its CMS defaults while the database is being set up.
+  }
+  const hero = data.sections.home_hero;
+  const title = seo?.title || data.settings.site_name || siteConfig.name;
+  const description = seo?.description || hero?.description || siteConfig.description;
+  return {
+    title,
+    description,
+    metadataBase: new URL(siteConfig.url),
+    alternates: seo?.canonicalUrl ? { canonical: seo.canonicalUrl } : { canonical: "/" },
+    robots: seo?.noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    openGraph: { title, description, siteName: data.settings.site_name || siteConfig.name, type: "website", images: seo?.ogImageUrl ? [seo.ogImageUrl] : hero?.imageUrl ? [hero.imageUrl] : undefined },
+    twitter: { card: "summary_large_image", title, description, images: seo?.ogImageUrl ? [seo.ogImageUrl] : hero?.imageUrl ? [hero.imageUrl] : undefined },
+  };
+}
+
+export default async function WebsiteHomePage() {
+  const data = await getHomeData();
+  return <HomePage data={data} />;
 }

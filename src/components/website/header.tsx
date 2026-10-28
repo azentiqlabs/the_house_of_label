@@ -1,41 +1,60 @@
-import Link from "next/link";
-import { navLinks, siteConfig } from "@/lib/site";
+"use client";
 
-export function Header() {
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+const navLinks = [
+  { setting: "nav_home", label: "Home", section: "home" },
+  { setting: "nav_about", label: "About Us", section: "about" },
+  { setting: "nav_what_we_do", label: "What We Do", section: "what-we-do" },
+  { setting: "nav_products", label: "Products", section: "products" },
+  { setting: "nav_machines", label: "Our Machines", section: "machines" },
+  { setting: "nav_industries", label: "Industries", section: "industries" },
+  { setting: "nav_gallery", label: "Gallery", section: "gallery" },
+  { setting: "nav_contact", label: "Contact", section: "contact" },
+];
+
+type Props = { settings: Record<string, string> };
+
+export function Header({ settings }: Props) {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const siteName = settings.site_name || "The House of Labels";
+  const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
+  const isHome = pathname === "/";
+
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/95 backdrop-blur">
-      <div className="container flex min-h-20 items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="flex items-center gap-3"
-          aria-label={siteConfig.name}
-        >
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-lg font-black text-white">
-            H
-          </span>
-          <span>
-            <span className="block text-sm font-extrabold text-slate-900">
-              The House of Labels
-            </span>
-            <span className="block text-[9px] font-bold tracking-[.22em] text-slate-500">
-              LABELS THAT YOU BETTER
-            </span>
-          </span>
+    <header className="topbar">
+      <div className="container nav">
+        <Link className="brand" href="/#home" aria-label={`${siteName} home`} onClick={() => setMenuOpen(false)}>
+          <img src={logo} alt={siteName} />
         </Link>
-        <nav className="hidden items-center gap-5 lg:flex">
-          {navLinks.map((link) => (
+        <nav className={`navlinks ${menuOpen ? "open" : ""}`} id="navlinks" aria-label="Main navigation">
+          {navLinks.map((link, index) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-xs font-semibold text-slate-700 transition hover:text-orange-600"
+              href={isHome ? `#${link.section}` : `/#${link.section}`}
+              key={link.section}
+              className={index === 0 && isHome ? "active" : undefined}
+              onClick={() => setMenuOpen(false)}
             >
-              {link.label}
+              {settings[link.setting] || link.label}
             </Link>
           ))}
         </nav>
-        <Link href="/contact#quote" className="btn btn-primary text-xs">
-          Request a Quote ↗
-        </Link>
+        <a className="btn btn-orange header-quote" href={isHome ? "#contact" : "/#contact"}>
+          {settings.header_quote_text || "Request a Quote"} <span aria-hidden="true">→</span>
+        </a>
+        <button
+          type="button"
+          className="menu-toggle"
+          id="menuToggle"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "×" : "☰"}
+        </button>
       </div>
     </header>
   );

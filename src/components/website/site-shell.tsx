@@ -1,12 +1,14 @@
-import { Header } from "@/components/website/header";
 import { Footer } from "@/components/website/footer";
+import { Header } from "@/components/website/header";
+import { getSiteSettings } from "@/lib/home-content";
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export async function SiteShell({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings();
   return (
     <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <Header settings={settings} />
+      {children}
+      <Footer settings={settings} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
-
-export const instant = false;
+export const dynamic = "force-dynamic";
 
 const links = [
   ["Overview", "/admin/dashboard"],
