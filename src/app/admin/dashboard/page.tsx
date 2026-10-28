@@ -44,7 +44,8 @@ export default async function DashboardPage() {
         <div className="card p-6">
           <h2 className="font-bold">Next steps</h2>
           <p className="muted mt-2 text-sm leading-6">
-            Use the authenticated resource API to manage content, page SEO and inquiries.
+            Use the authenticated resource API to manage content, page SEO and
+            inquiries.
           </p>
           <Link
             className="mt-4 inline-block font-bold text-orange-600"
@@ -56,7 +57,9 @@ export default async function DashboardPage() {
         <div className="card p-6">
           <h2 className="font-bold">Production readiness</h2>
           <p className="muted mt-2 text-sm leading-6">
-            Content APIs now require an admin session and validate all writes. Configure image storage, backups, rate limiting and production secrets before launch.
+            Content APIs now require an admin session and validate all writes.
+            Configure image storage, backups, rate limiting and production
+            secrets before launch.
           </p>
         </div>
       </div>

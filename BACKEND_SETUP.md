@@ -3,6 +3,7 @@
 This package is based on the supplied Next.js theme project and includes its `src/` and `prisma/` directories, plus the admin bootstrap script and environment example.
 
 ## Stack
+
 - Next.js App Router route handlers and server actions
 - PostgreSQL + Prisma
 - Zod validation
@@ -10,6 +11,7 @@ This package is based on the supplied Next.js theme project and includes its `sr
 - Allow-listed, reusable CRUD API for products, categories, machines, industries, gallery, customer brands, page sections, SEO pages, quote inquiries and site settings
 
 ## Setup
+
 1. Copy `.env.example` to `.env` and fill in PostgreSQL credentials, a random `AUTH_SECRET` (32+ chars), and a strong admin password.
 2. Install packages: `npm install`
 3. Generate Prisma client: `npx prisma generate`
@@ -20,6 +22,7 @@ This package is based on the supplied Next.js theme project and includes its `sr
 For Prisma 6, the generated client output is configured in `prisma/schema.prisma`. If the project uses a different Prisma major version, align the generator and datasource configuration before generating.
 
 ## CRUD API
+
 All admin endpoints require a valid session cookie:
 
 - `GET /api/admin/{resource}?page=1&limit=20&q=search`
@@ -35,9 +38,11 @@ Resources: `products`, `categories`, `machines`, `industries`, `gallery`, `brand
 Public quote submissions continue at `POST /api/inquiries` and do not require an admin session.
 
 ## SEO
+
 Product records support `seoTitle`, `seoDescription`, `canonicalUrl`, `ogImageUrl` and `noIndex`; page sections support SEO title/description; `SeoPage` stores path-level canonical/Open Graph/noindex rules. The existing `robots.ts` and `sitemap.ts` remain in place. To fully apply `SeoPage` records to every route, connect them to each route's `generateMetadata` function (metadata for product details already reads product-level SEO title/description).
 
 ## Production checklist
+
 - Use HTTPS and a unique production `AUTH_SECRET`; never commit `.env`.
 - Add rate limiting and CAPTCHA/honeypot controls to public quote submission.
 - Add an object-storage upload flow (e.g. S3-compatible storage) rather than accepting arbitrary upload bytes in route handlers; validate image MIME types and size.

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
@@ -61,16 +60,13 @@ export default async function Home() {
             </p>
 
             <h1 className="mt-5 text-4xl font-extrabold leading-tight md:text-6xl">
-              Reliable{" "}
-              <span className="text-orange-500">
-                Label Solutions
-              </span>{" "}
+              Reliable <span className="text-orange-500">Label Solutions</span>{" "}
               for Every Industry
             </h1>
 
             <p className="mt-5 max-w-lg text-sm leading-7 text-slate-300">
-              High-quality unprinted and printed labels engineered
-              for performance, precision and premium packaging.
+              High-quality unprinted and printed labels engineered for
+              performance, precision and premium packaging.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -109,8 +105,7 @@ export default async function Home() {
               key={feature}
               className="rounded-lg bg-white p-4 text-center text-sm font-bold text-slate-900"
             >
-              <span className="text-orange-500">✦</span>{" "}
-              {feature}
+              <span className="text-orange-500">✦</span> {feature}
             </div>
           ))}
         </div>
@@ -144,18 +139,16 @@ export default async function Home() {
             Who we are
           </p>
 
-          <h2 className="mt-3 text-3xl font-extrabold md:text-4xl">
-            About Us
-          </h2>
+          <h2 className="mt-3 text-3xl font-extrabold md:text-4xl">About Us</h2>
 
           <h3 className="mt-4 font-bold text-orange-600">
             The House of Labels
           </h3>
 
           <p className="mt-4 max-w-3xl leading-7 text-slate-600">
-            We provide high-quality label solutions for diverse
-            packaging applications, focusing on material expertise,
-            precision, consistency and reliable support.
+            We provide high-quality label solutions for diverse packaging
+            applications, focusing on material expertise, precision, consistency
+            and reliable support.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -167,8 +160,7 @@ export default async function Home() {
               },
               {
                 title: "Our Mission",
-                description:
-                  "Provide labels that look better and work better.",
+                description: "Provide labels that look better and work better.",
               },
               {
                 title: "Our Strength",
@@ -177,8 +169,7 @@ export default async function Home() {
               },
               {
                 title: "Why Choose Us?",
-                description:
-                  "Quality, fast delivery and responsive support.",
+                description: "Quality, fast delivery and responsive support.",
               },
             ].map((item) => (
               <article
@@ -250,9 +241,7 @@ export default async function Home() {
             </div>
           ) : (
             <div className="mt-8 rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center">
-              <p className="font-bold">
-                Our products will appear here.
-              </p>
+              <p className="font-bold">Our products will appear here.</p>
               <p className="mt-2 text-sm text-slate-500">
                 Add and publish products in your database to display them.
               </p>
@@ -298,8 +287,8 @@ export default async function Home() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7">
-            Tell us about your requirements and let us help you find
-            the right label for your application.
+            Tell us about your requirements and let us help you find the right
+            label for your application.
           </p>
 
           <Link
