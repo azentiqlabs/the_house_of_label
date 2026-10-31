@@ -21,7 +21,8 @@ export function Footer({ settings }: Props) {
           <a href="/#industries">Industries</a>
           <a href="/#contact">Contact</a>
         </div>
-        <span>© {new Date().getFullYear()} {siteName}. {note}</span>
+        {/* <span>© {new Date().getFullYear()} {siteName}. {note}</span> */}
+        <span>© {siteName}. {note}</span>
       </div>
     </footer>
   );

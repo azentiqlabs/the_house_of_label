@@ -56,3 +56,16 @@ The homepage reads `SeoPage` at path `/`; product details use product-level titl
 - Add rate limiting and CAPTCHA/honeypot controls to public quote submission.
 - Add object-storage image upload, database backups, audit logs, monitoring, error reporting and automated tests.
 - Restrict admin account creation and enforce strong passwords.
+
+
+## Admin image uploads
+
+The admin editor supports image uploads for product photos, product galleries, machine photos, industry images, gallery items, customer logos, social-sharing images, and the site logo setting. Accepted formats are JPG/JPEG, PNG, WebP, and GIF; each upload is limited to 4 MB. SVG files are intentionally not accepted.
+
+### Local development
+
+If `BLOB_READ_WRITE_TOKEN` is not set, image uploads are saved under `public/uploads/` and returned as `/uploads/<generated-file-name>`. The route requires an authenticated admin session and checks the file signature before saving.
+
+### Vercel deployment
+
+Do not rely on the local filesystem for uploaded media on Vercel. Create a **Public Vercel Blob** store for the project, connect it to the project environment, and make sure `BLOB_READ_WRITE_TOKEN` is available to the server. The upload route will then store images in Blob and save their public URL in the existing CMS fields. The token must remain server-side and must not use a `NEXT_PUBLIC_` prefix. Install the added dependency by running `npm install` after pulling/extracting this version.

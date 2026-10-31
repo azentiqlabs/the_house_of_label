@@ -199,7 +199,8 @@ export default async function AdminLoginPage({
         </div>
 
         <footer className="relative flex flex-wrap items-center justify-between gap-3 border-t border-[#d8eaf5] py-4 text-[11px] text-[#60798d]">
-          <span>© {new Date().getFullYear()} The House of Labels</span>
+          {/* <span>© {new Date().getFullYear()} The House of Labels</span> */}
+          <span>© The House of Labels</span>
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck aria-hidden="true" size={14} strokeWidth={1.8} />
             Authorized access only

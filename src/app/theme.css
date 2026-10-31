@@ -3029,3 +3029,38 @@ body { background: #f5fbff; color: var(--ink); }
 .hol-home .form-whatsapp-followup { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 800; color: #0876bd; }
 .hol-home .form-grid button:disabled { opacity: .65; cursor: wait; }
 @media (prefers-reduced-motion: reduce) { .hol-home *, .topbar *, .footer * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+
+/* Media uploaded through the admin CMS is shown on the public pages when available. */
+.industry-grid-no-images .industry-card-top .industry-photo {
+  display: block;
+  width: 72px;
+  height: 58px;
+  object-fit: cover;
+  border: 1px solid #d5ebf8;
+  border-radius: 10px;
+  background: #f6fbff;
+  box-shadow: 0 4px 12px rgba(6,54,93,.07);
+}
+.industry-grid-no-images .industry-card.has-industry-image .industry-card-top {
+  min-height: 58px;
+  margin-bottom: 18px;
+}
+.customer-logo-image {
+  display: block;
+  width: 72px;
+  max-width: 38%;
+  height: 45px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.customer-logo-name {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.customer-logo.has-customer-logo-image {
+  gap: 11px;
+}

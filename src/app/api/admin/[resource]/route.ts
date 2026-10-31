@@ -28,25 +28,19 @@ export async function GET(req: NextRequest, { params }: Ctx) {
   );
   const search = req.nextUrl.searchParams.get("q")?.trim().slice(0, 100);
   const where: any = {};
-  if (
-    search &&
-    [
-      "products",
-      "categories",
-      "machines",
-      "industries",
-      "gallery",
-      "brands",
-      "inquiries",
-      "pages",
-    ].includes(resource)
-  ) {
-    const field =
-      resource === "inquiries"
-        ? "name"
+  if (search && [
+    "products", "categories", "machines", "industries", "gallery", "brands",
+    "inquiries", "pages", "seo", "settings",
+  ].includes(resource)) {
+    const field = resource === "inquiries" || resource === "products" || resource === "categories" || resource === "machines" || resource === "industries" || resource === "brands"
+      ? "name"
+      : resource === "gallery"
+        ? "title"
         : resource === "pages"
           ? "title"
-          : "name";
+          : resource === "seo"
+            ? "path"
+            : "key";
     where[field] = { contains: search, mode: "insensitive" };
   }
   try {

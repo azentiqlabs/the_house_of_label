@@ -1,4 +1,5 @@
 import { ResourceManager } from "@/components/admin/resource-manager";
+import { SiteSettingsManager } from "@/components/admin/site-settings-manager";
 
 const supportedModules = new Set([
   "products",
@@ -28,5 +29,6 @@ export default async function AdminModulePage({
       </div>
     );
   }
+  if (resource === "settings") return <SiteSettingsManager />;
   return <ResourceManager resource={resource} />;
 }
