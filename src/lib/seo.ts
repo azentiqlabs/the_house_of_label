@@ -82,7 +82,9 @@ export async function getManagedMetadata(
         description: record.description || fallback.description,
         image: record.ogImageUrl || fallback.image,
         canonical: record.canonicalUrl || fallback.canonical || routePath,
-        noIndex: record.noIndex,
+        // A page-level noIndex flag is a safety override: SEO records must not
+        // accidentally make an explicitly hidden product indexable.
+        noIndex: Boolean(record.noIndex || fallback.noIndex),
       });
     }
   } catch {

@@ -10,6 +10,8 @@ export type HomeSection = {
   sortOrder?: number;
   buttonText?: string | null;
   buttonUrl?: string | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
   status: string;
 };
 
@@ -270,6 +272,8 @@ export async function getHomeData(): Promise<HomeData> {
       sortOrder: section.sortOrder,
       buttonText: section.buttonText,
       buttonUrl: section.buttonUrl,
+      seoTitle: section.seoTitle,
+      seoDescription: section.seoDescription,
       status: section.status,
     };
   }

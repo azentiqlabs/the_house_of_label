@@ -38,13 +38,13 @@ type SeoDraft = {
 };
 
 const standardPages = [
-  { path: "/", label: "Home page", description: "The main page visitors see first.", title: "The House of Labels", meta: "Printed and unprinted label solutions for every industry." },
-  { path: "/about", label: "About us", description: "Your company story, capabilities and values.", title: "About The House of Labels", meta: "Learn about our label manufacturing experience and capabilities." },
-  { path: "/products", label: "Products", description: "Your product catalogue landing page.", title: "Label Products", meta: "Explore printed, unprinted, thermal and specialty label solutions." },
-  { path: "/machines", label: "Machines", description: "Your machinery and production capabilities page.", title: "Our Machines", meta: "Explore the machinery and processes supporting our label solutions." },
-  { path: "/industries", label: "Industries", description: "The industries and applications you serve.", title: "Industries We Serve", meta: "Label solutions for food, personal care, pharmaceuticals and more." },
-  { path: "/gallery", label: "Gallery", description: "Product, machine and facility photographs.", title: "Gallery", meta: "Explore our label products, machines, facility and applications." },
-  { path: "/contact", label: "Contact", description: "Contact details and quote request form.", title: "Contact The House of Labels", meta: "Contact us about your label requirements and request a quote." },
+  { path: "/", label: "Home page", description: "Your main business and product introduction.", title: "Printed & Custom Label Manufacturer", meta: "The House of Labels provides printed, unprinted and thermal label solutions for product packaging, barcodes, shipping and identification applications." },
+  { path: "/about", label: "About us", description: "Your company story, mission, vision and capabilities.", title: "About The House of Labels", meta: "Learn about The House of Labels, our label solutions, production capabilities and approach to customer requirements." },
+  { path: "/products", label: "Products", description: "Your product catalogue and label types.", title: "Printed, Unprinted & Thermal Labels", meta: "Explore printed labels, unprinted label rolls, thermal labels and custom label solutions for packaging, product identification and shipping." },
+  { path: "/machines", label: "Machines", description: "Your label production and finishing capabilities.", title: "Label Printing & Finishing Machines", meta: "Explore the printing, slitting, die-cutting and rewinding equipment used to support label production and finishing." },
+  { path: "/industries", label: "Industries", description: "The industries and applications you serve.", title: "Label Solutions for Different Industries", meta: "Explore label applications for food and dairy, FMCG, personal care, pharmaceuticals, chemicals, retail and logistics." },
+  { path: "/gallery", label: "Gallery", description: "Product, machine and facility photographs.", title: "Label Products & Manufacturing Gallery", meta: "View printed product labels, thermal label rolls, production equipment and label application examples from The House of Labels." },
+  { path: "/contact", label: "Contact", description: "Contact details and quotation enquiries.", title: "Request a Custom Label Printing Quote", meta: "Contact The House of Labels to discuss printed, unprinted or thermal label requirements and request a quotation." },
 ];
 
 const initialDraft = (path: string): SeoDraft => {
@@ -233,7 +233,7 @@ export function SeoManager() {
         <a className="hol-button hol-button-secondary" href="/" target="_blank" rel="noreferrer"><ArrowUpRight size={16} /> View website</a>
       </div>
 
-      <div className="hol-friendly-tip"><span><CircleHelp size={19} /></span><div><strong>What is SEO?</strong><p>SEO helps search engines understand your pages. A clear title and description improve how your website is presented, but they do not guarantee a higher Google position.</p></div></div>
+      <div className="hol-friendly-tip"><span><CircleHelp size={19} /></span><div><strong>What is SEO?</strong><p>SEO helps search engines understand your pages. A clear title and description help describe each page, but they do not guarantee a higher Google position. Google does not use a hidden meta-keywords field: place your main search phrase naturally in the visible page heading, introduction and useful page content.</p></div></div>
       {notice && <div className="hol-alert hol-alert-success" role="status"><Check size={17} />{notice}</div>}
       {error && <div className="hol-alert hol-alert-error" role="alert"><AlertCircle size={17} />{error}</div>}
 

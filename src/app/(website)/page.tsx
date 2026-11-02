@@ -8,8 +8,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomeData();
   const hero = data.sections.home_hero;
   return getManagedMetadata("/", {
-    title: data.settings.site_name || siteConfig.name,
-    description: hero?.description || siteConfig.description,
+    title: hero?.seoTitle?.trim() || "Printed & Custom Label Manufacturer",
+    description:
+      hero?.seoDescription?.trim() ||
+      hero?.description ||
+      siteConfig.description,
     image: hero?.imageUrl,
     canonical: "/",
   });

@@ -60,3 +60,8 @@ Replace the sample contact details, configure a real WhatsApp number in Site Set
 ## Admin image uploads
 
 The admin panel includes file upload and image previews for image fields. Run `npm install` to install the Vercel Blob SDK added for persistent uploads. For local development, uploads fall back to `public/uploads/`. On CloudNinza release-based hosting, configure `UPLOAD_DIR` to the persistent shared uploads directory (for example `/home/<account>/web/<domain>/private/cn-shared/public/uploads`) and keep the deployed `/uploads/[filename]` Route Handler so new files can be served at runtime. For Vercel, create a Public Blob store and configure the server-only `BLOB_READ_WRITE_TOKEN`; see `BACKEND_SETUP.md`.
+
+
+## SEO launch checklist
+
+See [SEO_DEPLOYMENT_CHECKLIST.md](./SEO_DEPLOYMENT_CHECKLIST.md) for the production `SITE_URL`, sitemap, robots.txt, Search Console and content checklist.

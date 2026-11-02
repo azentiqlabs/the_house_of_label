@@ -1,41 +1,81 @@
+import { getHomeData } from "@/lib/home-content";
 import { getManagedMetadata } from "@/lib/seo";
 
+const toLines = (value?: string | null) =>
+  (value || "").split("\n").map((line) => line.trim()).filter(Boolean);
+
 export async function generateMetadata() {
+  const data = await getHomeData();
+  const about = data.sections.home_about;
   return getManagedMetadata("/about", {
-    title: "About Us",
-    description: "Learn about The House of Labels and our label manufacturing capabilities.",
+    title: about?.seoTitle?.trim() || "About The House of Labels",
+    description:
+      about?.seoDescription?.trim() ||
+      about?.description ||
+      "Learn about The House of Labels, our label solutions, capabilities and approach to customer requirements.",
+    image: about?.imageUrl,
   });
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const data = await getHomeData();
+  const sections = data.sections;
+  const about = sections.home_about;
+  const values = [
+    { key: "home_vision", fallbackTitle: "Our Vision" },
+    { key: "home_mission", fallbackTitle: "Our Mission" },
+    { key: "home_strength", fallbackTitle: "Our Strength" },
+  ] as const;
+  const choose = sections.home_choose;
+
   return (
     <section className="section">
-      <div className="container max-w-4xl">
-        <p className="eyebrow">Who we are</p>
+      <div className="container max-w-5xl">
+        <p className="eyebrow">{about?.subtitle || "Who we are"}</p>
         <h1 className="section-title mt-3">About The House of Labels</h1>
-        <p className="muted mt-5 leading-8">
-          We provide label solutions for diverse packaging applications. Add the
-          approved company story, capabilities, vision, mission and strengths
-          here, then manage this content through the CMS.
+        <p className="muted mt-5 max-w-4xl leading-8">
+          {about?.description ||
+            "The House of Labels provides printed, unprinted and thermal label solutions for product packaging, identification and shipping applications."}
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {[
-            [
-              "Our Vision",
-              "Become a trusted partner for dependable label solutions.",
-            ],
-            ["Our Mission", "Provide labels that look better and work better."],
-            [
-              "Our Strength",
-              "Application knowledge, material expertise and consistent quality.",
-            ],
-          ].map(([a, b]) => (
-            <article className="card p-5" key={a}>
-              <h2 className="font-bold">{a}</h2>
-              <p className="muted mt-2 text-sm leading-6">{b}</p>
-            </article>
-          ))}
+        {about?.imageUrl && (
+          <img
+            src={about.imageUrl}
+            alt="The House of Labels label products and capabilities"
+            className="mt-8 max-h-[440px] w-full rounded-2xl object-cover"
+          />
+        )}
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {values.map(({ key, fallbackTitle }) => {
+            const section = sections[key];
+            if (!section || section.status !== "PUBLISHED") return null;
+            return (
+              <article className="card p-6" key={key}>
+                <h2 className="text-xl font-bold">{section?.title || fallbackTitle}</h2>
+                <p className="muted mt-3 text-sm leading-7">
+                  {section?.description || "Add your approved company information in Admin → Page Sections."}
+                </p>
+              </article>
+            );
+          })}
         </div>
+
+        {choose && choose.status === "PUBLISHED" && (
+          <section className="card mt-6 p-6 md:p-8">
+            <h2 className="text-2xl font-bold">{choose.title || "Why Choose Us?"}</h2>
+            {choose.description && choose.description.includes("\n") ? (
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {toLines(choose.description).map((line) => (
+                  <li className="muted flex gap-2" key={line}>
+                    <span aria-hidden="true">✓</span><span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="muted mt-3 leading-7">{choose.description}</p>
+            )}
+          </section>
+        )}
       </div>
     </section>
   );

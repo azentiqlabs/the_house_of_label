@@ -17,6 +17,11 @@ const sectionText = (section: HomeSection | undefined, fallback = "") => section
 const sectionHref = (section: HomeSection | undefined, fallback: string) => section?.buttonUrl || fallback;
 const lines = (value: string) => value.split("\n").map((part) => part.trim()).filter(Boolean);
 const safeImage = (src: string | null | undefined, fallback = "/theme/image15.png") => src || fallback;
+const publicSetting = (value?: string) => {
+  const text = value?.trim() || "";
+  if (!text || /demo|example\.com|xxxxx|to be added|your-domain/i.test(text)) return "";
+  return text;
+};
 
 function productGroup(product: HomeProduct) {
   const value = `${product.category.slug} ${product.category.name} ${product.name}`.toLowerCase();
@@ -65,6 +70,9 @@ export function HomePage({ data }: Props) {
   const logoUrl = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
   const companyName = settings.site_name || "The House of Labels";
   const tagline = settings.site_tagline || "LABELS THAT RUN BETTER";
+  const contactPhone = publicSetting(settings.contact_phone);
+  const contactEmail = publicSetting(settings.contact_email);
+  const contactAddress = publicSetting(settings.contact_address);
 
   async function submitQuote(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -316,10 +324,10 @@ export function HomePage({ data }: Props) {
                 <h3>Or Chat Directly</h3><p>Have a question? Chat with our team on WhatsApp.</p><a className="whatsapp" href={whatsAppUrl} target={phone.length >= 10 ? "_blank" : undefined} rel={phone.length >= 10 ? "noreferrer" : undefined}>◉ &nbsp; Chat on WhatsApp</a>
                 <hr />
                 <h3>Contact Information</h3>
-                <div className="contact-line"><b>☎</b><span>{settings.contact_phone || "Add verified business phone"}</span></div>
-                <div className="contact-line"><b>✉</b><span>{settings.contact_email || "Add verified business email"}</span></div>
-                <div className="contact-line"><b>⌖</b><span>{lines(settings.contact_address || "Business address to be added").map((part, index) => <span key={`${part}-${index}`}>{part}{index < lines(settings.contact_address || "Business address to be added").length - 1 ? <br /> : null}</span>)}</span></div>
-                <p className="contact-note">Replace demo contact details with verified business information before publishing.</p>
+                {contactPhone && <div className="contact-line"><b>☎</b><a href={`tel:${contactPhone.replace(/[^+\d]/g, "")}`}>{contactPhone}</a></div>}
+                {contactEmail && <div className="contact-line"><b>✉</b><a href={`mailto:${contactEmail}`}>{contactEmail}</a></div>}
+                {contactAddress && <div className="contact-line"><b>⌖</b><span>{lines(contactAddress).map((part, index) => <span key={`${part}-${index}`}>{part}{index < lines(contactAddress).length - 1 ? <br /> : null}</span>)}</span></div>}
+                {!contactPhone && !contactEmail && !contactAddress && <p className="contact-note">Use the quotation form to tell us about your label requirements and our team can follow up.</p>}
               </aside>
             </div>
           </section>
