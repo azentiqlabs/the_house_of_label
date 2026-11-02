@@ -1,9 +1,13 @@
+import { getManagedMetadata } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
-export const metadata = buildMetadata(
-  "Industries We Serve",
-  "Label solutions for food, personal care, pharmaceuticals, chemicals and more.",
-);
+
+export async function generateMetadata() {
+  return getManagedMetadata("/industries", {
+    title: "Industries We Serve",
+    description: "Label solutions for food, personal care, pharmaceuticals, chemicals and more.",
+  });
+}
+
 export default async function IndustriesPage() {
   let industries: any[] = [];
   try {

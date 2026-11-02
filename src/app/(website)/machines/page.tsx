@@ -1,9 +1,13 @@
+import { getManagedMetadata } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
-export const metadata = buildMetadata(
-  "Machines",
-  "Explore the machinery and processes supporting our label solutions.",
-);
+
+export async function generateMetadata() {
+  return getManagedMetadata("/machines", {
+    title: "Machines",
+    description: "Explore the machinery and processes supporting our label solutions.",
+  });
+}
+
 export default async function MachinesPage() {
   let machines: any[] = [];
   try {

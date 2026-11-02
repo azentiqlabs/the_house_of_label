@@ -1,8 +1,12 @@
-import { buildMetadata } from "@/lib/seo";
-export const metadata = buildMetadata(
-  "About Us",
-  "Learn about The House of Labels and our label manufacturing capabilities.",
-);
+import { getManagedMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  return getManagedMetadata("/about", {
+    title: "About Us",
+    description: "Learn about The House of Labels and our label manufacturing capabilities.",
+  });
+}
+
 export default function AboutPage() {
   return (
     <section className="section">

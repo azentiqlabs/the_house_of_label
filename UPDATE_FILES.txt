@@ -1,0 +1,33 @@
+House of Labels Admin UX Update
+
+New files:
+- src/components/admin/seo-manager.tsx
+- src/components/admin/page-sections-manager.tsx
+- src/components/admin/account-settings-manager.tsx
+- src/app/api/admin/account/route.ts
+- prisma/migrations/20261102123000_admin_session_version/migration.sql
+- ADMIN_SEO_ACCOUNT_UPDATE.md
+- UPDATE_FILES.txt
+
+Updated files:
+- .env.example
+- package.json
+- prisma/schema.prisma
+- src/app/admin/admin.css
+- src/app/admin/dashboard/[...module]/page.tsx
+- src/app/admin/login/actions.ts
+- src/app/api/admin/account/route.ts
+- src/components/admin/admin-shell.tsx
+- src/lib/auth.ts
+- src/lib/seo.ts
+- src/app/(website)/page.tsx
+- src/app/(website)/about/page.tsx
+- src/app/(website)/products/page.tsx
+- src/app/(website)/products/[slug]/page.tsx
+- src/app/(website)/machines/page.tsx
+- src/app/(website)/industries/page.tsx
+- src/app/(website)/gallery/page.tsx
+- src/app/(website)/contact/page.tsx
+- README.md
+
+Extract patch contents into the root of your existing project, preserving directories.

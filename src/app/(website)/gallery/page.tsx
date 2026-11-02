@@ -1,9 +1,13 @@
+import { getManagedMetadata } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
-export const metadata = buildMetadata(
-  "Gallery",
-  "Explore our label products, machines, facility and applications.",
-);
+
+export async function generateMetadata() {
+  return getManagedMetadata("/gallery", {
+    title: "Gallery",
+    description: "Explore our label products, machines, facility and applications.",
+  });
+}
+
 export default async function GalleryPage() {
   let items: any[] = [];
   try {

@@ -9,11 +9,12 @@ The supplied HTML/CSS theme is now integrated into the Next.js App Router projec
    ```bash
    npm install
    ```
-3. Generate the Prisma client and apply the existing migrations:
+3. Generate the Prisma client and apply the database migrations:
    ```bash
    npx prisma generate
    npx prisma migrate deploy
    ```
+   `npm run build` also runs the `prebuild` Prisma generation step automatically.
 4. Create the admin account and populate the starter content:
    ```bash
    npm run admin:create
@@ -27,14 +28,15 @@ The supplied HTML/CSS theme is now integrated into the Next.js App Router projec
 
 ## Manage the theme from the admin area
 
-- **Pages**: edit homepage text, headings, feature cards, vision/mission/strength cards, section visibility and button links. Theme section keys start with `home_`; edit the existing key rather than creating a new one if you want to replace existing content.
+- **Page Sections**: use the visual section cards to edit homepage headings, descriptions, photos, buttons and visibility. Internal section keys are kept in the background so the homepage layout is not accidentally disconnected.
 - **Products / Categories**: edit product names, descriptions, images, category and publication status.
 - **Machines** and **Industries**: edit the homepage machine selector and industry cards.
 - **Gallery**: upload photos, set titles and accessible descriptions, choose a category, and set display order.
 - **Customer Brands**: upload customer or partner logos and control their order. The seed includes fictional sample names so the design renders; replace them before publishing.
 - **Site Settings**: manage company name, upload the site logo, and edit tagline, navigation labels, WhatsApp number, public phone/email/address and footer text.
-- **SEO**: manage route-level SEO metadata. The homepage reads the `/` record; product details also use product SEO fields.
+- **SEO Settings**: choose Home, About, Products, Machines, Industries, Gallery or Contact and edit the Google title, description and social sharing image. A search preview is shown before saving. Canonical URL and no-index options are in Advanced settings. These records are now applied by the metadata generation for the corresponding public routes. For individual product pages, add the existing route path such as `/products/thermal-labels`; product-level fields remain as fallbacks.
 - **Quote Inquiries**: review submissions stored from the homepage quote form, change status and add internal notes.
+- **Account Settings**: update the admin display name and sign-in email, or change the password. Current password confirmation is required. New passwords must be at least 12 characters. Changing the password signs out other admin sessions. Email ownership verification is not configured yet; the new email becomes active immediately after the current password is confirmed.
 
 ### Images and uploads
 
@@ -57,4 +59,4 @@ Replace the sample contact details, configure a real WhatsApp number in Site Set
 
 ## Admin image uploads
 
-The admin panel includes file upload and image previews for image fields. Run `npm install` to install the Vercel Blob SDK added for persistent uploads. For local development, uploads fall back to `public/uploads/`. For Vercel, create a Public Blob store and configure the server-only `BLOB_READ_WRITE_TOKEN`; see `BACKEND_SETUP.md`.
+The admin panel includes file upload and image previews for image fields. Run `npm install` to install the Vercel Blob SDK added for persistent uploads. For local development, uploads fall back to `public/uploads/`. On CloudNinza release-based hosting, configure `UPLOAD_DIR` to the persistent shared uploads directory (for example `/home/<account>/web/<domain>/private/cn-shared/public/uploads`) and keep the deployed `/uploads/[filename]` Route Handler so new files can be served at runtime. For Vercel, create a Public Blob store and configure the server-only `BLOB_READ_WRITE_TOKEN`; see `BACKEND_SETUP.md`.

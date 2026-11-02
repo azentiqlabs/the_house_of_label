@@ -1,10 +1,13 @@
+import { getManagedMetadata } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
 import { ProductCard } from "@/components/website/product-card";
-export const metadata = buildMetadata(
-  "Products",
-  "Explore printed, unprinted, thermal and specialty label solutions.",
-);
+export async function generateMetadata() {
+  return getManagedMetadata("/products", {
+    title: "Products",
+    description: "Explore printed, unprinted, thermal and specialty label solutions.",
+  });
+}
+
 export default async function ProductsPage() {
   let products: any[] = [];
   try {

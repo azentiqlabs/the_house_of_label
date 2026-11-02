@@ -1,9 +1,12 @@
-import { buildMetadata } from "@/lib/seo";
+import { getManagedMetadata } from "@/lib/seo";
 import { QuoteForm } from "@/components/forms/quote-form";
-export const metadata = buildMetadata(
-  "Contact & Request a Quote",
-  "Contact The House of Labels about your label requirements and request a quote.",
-);
+export async function generateMetadata() {
+  return getManagedMetadata("/contact", {
+    title: "Contact & Request a Quote",
+    description: "Contact The House of Labels about your label requirements and request a quote.",
+  });
+}
+
 export default function ContactPage() {
   return (
     <section className="section bg-slate-50">

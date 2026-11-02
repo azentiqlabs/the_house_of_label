@@ -1,5 +1,8 @@
 import { ResourceManager } from "@/components/admin/resource-manager";
 import { SiteSettingsManager } from "@/components/admin/site-settings-manager";
+import { PageSectionsManager } from "@/components/admin/page-sections-manager";
+import { SeoManager } from "@/components/admin/seo-manager";
+import { AccountSettingsManager } from "@/components/admin/account-settings-manager";
 
 const supportedModules = new Set([
   "products",
@@ -12,6 +15,7 @@ const supportedModules = new Set([
   "pages",
   "seo",
   "settings",
+  "account",
 ]);
 
 export default async function AdminModulePage({
@@ -30,5 +34,8 @@ export default async function AdminModulePage({
     );
   }
   if (resource === "settings") return <SiteSettingsManager />;
+  if (resource === "pages") return <PageSectionsManager />;
+  if (resource === "seo") return <SeoManager />;
+  if (resource === "account") return <AccountSettingsManager />;
   return <ResourceManager resource={resource} />;
 }

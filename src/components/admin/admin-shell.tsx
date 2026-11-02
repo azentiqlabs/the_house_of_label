@@ -18,6 +18,7 @@ import {
   Search,
   Settings2,
   Tags,
+  UserCog,
   UsersRound,
   X,
 } from "lucide-react";
@@ -51,6 +52,7 @@ const groups = [
     links: [
       { label: "SEO pages", href: "/admin/dashboard/seo", icon: Search },
       { label: "Site settings", href: "/admin/dashboard/settings", icon: Settings2 },
+      { label: "Account settings", href: "/admin/dashboard/account", icon: UserCog },
     ],
   },
 ];

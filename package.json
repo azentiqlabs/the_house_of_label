@@ -10,20 +10,22 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "admin:create": "tsx scripts/create-admin.ts",
-    "cms:seed": "tsx scripts/seed-theme.ts"
+    "cms:seed": "tsx scripts/seed-theme.ts",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prebuild": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "@vercel/blob": "^2.8.2",
     "bcryptjs": "^3.0.3",
     "dotenv": "^18.0.9",
     "jose": "^6.2.13",
-    "lucide-react": "^1.61.0",
+    "lucide-react": "^1.66.0",
     "next": "16.4.2",
     "pg": "^8.23.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "zod": "^4.1.12",
-    "@vercel/blob": "^2.8.2"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

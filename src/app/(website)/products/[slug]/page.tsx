@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { siteConfig } from "@/lib/site";
+import { getManagedMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,26 +15,24 @@ export async function generateMetadata({
     const product = await prisma.product.findFirst({
       where: { slug, status: "PUBLISHED" },
     });
-    if (product)
-      return {
+    if (product) {
+      const description = product.seoDescription || product.shortDescription || product.description || siteConfig.description;
+      return getManagedMetadata(`/products/${product.slug}`, {
         title: product.seoTitle || product.name,
-        description:
-          product.seoDescription ||
-          product.shortDescription ||
-          product.description ||
-          siteConfig.description,
-        alternates: { canonical: `/products/${product.slug}` },
-        openGraph: {
-          title: product.seoTitle || product.name,
-          description:
-            product.seoDescription ||
-            product.shortDescription ||
-            siteConfig.description,
-          images: product.imageUrl ? [product.imageUrl] : [],
-        },
-      };
-  } catch {}
-  return { title: "Product details" };
+        description,
+        image: product.ogImageUrl || product.imageUrl,
+        canonical: product.canonicalUrl || `/products/${product.slug}`,
+        noIndex: product.noIndex,
+      });
+    }
+  } catch {
+    // Use a generic fallback if the database is temporarily unavailable.
+  }
+  return getManagedMetadata(`/products/${slug}`, {
+    title: "Product details",
+    description: siteConfig.description,
+    canonical: `/products/${slug}`,
+  });
 }
 
 export default async function ProductDetailPage({
