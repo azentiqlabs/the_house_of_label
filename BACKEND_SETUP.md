@@ -69,3 +69,26 @@ If `BLOB_READ_WRITE_TOKEN` is not set, image uploads are saved under `public/upl
 ### Vercel deployment
 
 Do not rely on the local filesystem for uploaded media on Vercel. Create a **Public Vercel Blob** store for the project, connect it to the project environment, and make sure `BLOB_READ_WRITE_TOKEN` is available to the server. The upload route will then store images in Blob and save their public URL in the existing CMS fields. The token must remain server-side and must not use a `NEXT_PUBLIC_` prefix. Install the added dependency by running `npm install` after pulling/extracting this version.
+
+### Persistent uploads on release-based hosting (CloudNinza)
+
+The admin upload endpoint writes files to the directory returned by
+`getUploadDirectory()`. Configure the following server-side environment
+variable on CloudNinza so every release writes to the same shared directory:
+
+```env
+UPLOAD_DIR=/home/thehouseofla/web/thehouseoflabel.com/private/cn-shared/public/uploads
+```
+
+The application includes a Node.js Route Handler at
+`src/app/uploads/[filename]/route.ts`. It serves UUID-named public image files
+from `UPLOAD_DIR` at `/uploads/<filename>` without relying on Next.js to index
+new runtime files in its `public` asset manifest. The route permits only the
+image extensions accepted by the authenticated upload endpoint and rejects
+non-UUID filenames and path traversal attempts.
+
+After deploying this code and setting `UPLOAD_DIR`, rebuild and restart the
+Next.js application using the CloudNinza deployment workflow. Existing image
+URLs such as `/uploads/<uuid>.jpg` remain unchanged. Keep the upload directory
+owned by the application user and readable by the Node.js process; do not use
+world-writable permissions such as `777`.

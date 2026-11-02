@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { getUploadDirectory } from "@/lib/upload-storage";
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { getAdminSession } from "@/lib/auth";
@@ -68,7 +69,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Connect a Vercel Blob store to enable persistent image uploads. Add BLOB_READ_WRITE_TOKEN to this project's environment, then redeploy." }, { status: 503 });
   }
 
-  const uploadDirectory = path.join(process.cwd(), "public", "uploads");
+  const uploadDirectory = getUploadDirectory();
   try {
     await mkdir(uploadDirectory, { recursive: true });
     await writeFile(path.join(uploadDirectory, filename), bytes, { flag: "wx" });
