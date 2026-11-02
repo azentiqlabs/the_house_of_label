@@ -26,7 +26,7 @@ function resolveSiteUrl(): string {
 export const siteConfig = {
   name: "The House of Labels",
   description:
-    "The House of Labels provides printed, unprinted and thermal label solutions for product packaging, barcodes, shipping and identification applications.",
+    "The House of Labels is a custom label printer in Sanaswadi, Maharashtra, providing printed label solutions for product packaging, barcodes, shipping and identification applications.",
   url: resolveSiteUrl(),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 };

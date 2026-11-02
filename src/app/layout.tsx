@@ -6,10 +6,23 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `Printed & Custom Label Manufacturer | ${siteConfig.name}`,
+    default: `The House Of Label | Official Website – Custom Label Printer in Sanaswadi`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  // Meta keywords are included for completeness, but Google does not use this
+  // tag as a ranking signal. Keep the terms relevant and avoid keyword stuffing.
+  keywords: [
+    "The House Of Label",
+    "The House of Labels",
+    "The House Of Label official website",
+    "custom label printer Sanaswadi",
+    "custom printed labels Maharashtra",
+    "product packaging labels",
+    "thermal labels",
+    "barcode labels",
+    "QR code stickers",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -24,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    title: `Printed & Custom Label Manufacturer | ${siteConfig.name}`,
+    title: `The House Of Label | Official Website – Custom Label Printer in Sanaswadi`,
     description: siteConfig.description,
     url: siteConfig.url,
   },

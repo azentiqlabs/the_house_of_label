@@ -26,14 +26,25 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
   const address = cleanSetting(settings.contact_address);
   const logo = toAbsoluteUrl(cleanSetting(settings.site_logo_url) || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png");
 
+  // Business profile details supplied by the owner. Do not add guessed phone,
+  // opening hours, coordinates, ratings, or review markup.
   const organization = {
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "@id": `${siteConfig.url}/#organization`,
     name,
+    alternateName: "The House Of Label",
     url: siteConfig.url,
-    description: siteConfig.description,
-    ...(logo ? { logo } : {}),
-    ...(address ? { address: { "@type": "PostalAddress", streetAddress: address.replace(/\s*\n\s*/g, ", ") } } : {}),
+    description:
+      "Custom label printer providing printed label solutions. Located at L & T Phata, Bharat Gass Road, Sanaswadi, Maharashtra 412208, India.",
+    ...(logo ? { logo, image: logo } : {}),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "L & T Phata, Bharat Gass Road",
+      addressLocality: "Sanaswadi",
+      addressRegion: "Maharashtra",
+      postalCode: "412208",
+      addressCountry: "IN",
+    },
     ...(email || phone
       ? { contactPoint: [{ "@type": "ContactPoint", contactType: "sales", ...(email ? { email } : {}), ...(phone ? { telephone: phone } : {}) }] }
       : {}),

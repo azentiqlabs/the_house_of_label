@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomeData();
   const hero = data.sections.home_hero;
   return getManagedMetadata("/", {
-    title: hero?.seoTitle?.trim() || "Printed & Custom Label Manufacturer",
+    title: hero?.seoTitle?.trim() || "The House Of Label | Official Website",
     description:
       hero?.seoDescription?.trim() ||
       hero?.description ||
