@@ -4,15 +4,14 @@ type Props = { settings: Record<string, string> };
 
 export function Footer({ settings }: Props) {
   const siteName = settings.site_name || "The House of Labels";
-  const tagline = settings.site_tagline || "LABELS THAT RUN BETTER";
   const note = settings.footer_note || "All rights reserved.";
+  const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
 
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <Link href="/" className="brand" aria-label={`${siteName} home`}>
-          <span className="brand-mark">H</span>
-          <span className="brand-name">{siteName}<small>{tagline}</small></span>
+            <img src={logo} alt={siteName} />
         </Link>
         <div className="footer-links">
           <a href="/about">About</a>
@@ -27,3 +26,4 @@ export function Footer({ settings }: Props) {
     </footer>
   );
 }
+
