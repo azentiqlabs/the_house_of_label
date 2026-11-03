@@ -283,7 +283,7 @@ export function HomePage({ data }: Props) {
                           <span key={`${part}-${lineIndex}`}>
                             {part}
                             {lineIndex <
-                            lines(feature?.title || "").length - 1 ? (
+                              lines(feature?.title || "").length - 1 ? (
                               <br />
                             ) : null}
                           </span>
@@ -972,7 +972,7 @@ export function HomePage({ data }: Props) {
                     title={label}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-slate-900 hover:bg-slate-900 hover:text-white"
                   >
-                    <Icon />
+                    <Icon size={20} />
                   </a>
                 ))}
               </aside>
