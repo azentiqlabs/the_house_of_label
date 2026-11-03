@@ -26,9 +26,10 @@ export function buildMetadata(
 }
 
 function buildMetadataValues(values: SeoFallback): Metadata {
-  const fullTitle = values.title === siteConfig.name
-    ? values.title
-    : `${values.title} | ${siteConfig.name}`;
+  const fullTitle =
+    values.title === siteConfig.name
+      ? values.title
+      : `${values.title} | ${siteConfig.name}`;
   const image = values.image || undefined;
   return {
     title: { absolute: fullTitle },
@@ -91,5 +92,8 @@ export async function getManagedMetadata(
     // Keep public pages available while the database is being configured.
   }
 
-  return buildMetadataValues({ ...fallback, canonical: fallback.canonical || routePath });
+  return buildMetadataValues({
+    ...fallback,
+    canonical: fallback.canonical || routePath,
+  });
 }

@@ -57,7 +57,6 @@ The homepage reads `SeoPage` at path `/`; product details use product-level titl
 - Add object-storage image upload, database backups, audit logs, monitoring, error reporting and automated tests.
 - Restrict admin account creation and enforce strong passwords.
 
-
 ## Admin image uploads
 
 The admin editor supports image uploads for product photos, product galleries, machine photos, industry images, gallery items, customer logos, social-sharing images, and the site logo setting. Accepted formats are JPG/JPEG, PNG, WebP, and GIF; each upload is limited to 4 MB. SVG files are intentionally not accepted.

@@ -5,7 +5,8 @@ import { siteConfig } from "@/lib/site";
 
 function cleanSetting(value?: string): string | undefined {
   const text = value?.trim();
-  if (!text || /demo|example\.com|xxxxx|to be added|your-domain/i.test(text)) return undefined;
+  if (!text || /demo|example\.com|xxxxx|to be added|your-domain/i.test(text))
+    return undefined;
   return text;
 }
 
@@ -24,7 +25,10 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
   const email = cleanSetting(settings.contact_email);
   const phone = cleanSetting(settings.contact_phone);
   const address = cleanSetting(settings.contact_address);
-  const logo = toAbsoluteUrl(cleanSetting(settings.site_logo_url) || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png");
+  const logo = toAbsoluteUrl(
+    cleanSetting(settings.site_logo_url) ||
+      "/theme/THE_HOUSE_OF_LABEL_LOGO02.png",
+  );
 
   // Business profile details supplied by the owner. Do not add guessed phone,
   // opening hours, coordinates, ratings, or review markup.
@@ -46,7 +50,16 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
       addressCountry: "IN",
     },
     ...(email || phone
-      ? { contactPoint: [{ "@type": "ContactPoint", contactType: "sales", ...(email ? { email } : {}), ...(phone ? { telephone: phone } : {}) }] }
+      ? {
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "sales",
+              ...(email ? { email } : {}),
+              ...(phone ? { telephone: phone } : {}),
+            },
+          ],
+        }
       : {}),
   };
 
@@ -69,7 +82,9 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
       />
       <Header settings={settings} />
       {children}

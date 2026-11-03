@@ -21,13 +21,6 @@ Updated files:
 - src/lib/auth.ts
 - src/lib/seo.ts
 - src/app/(website)/page.tsx
-- src/app/(website)/about/page.tsx
-- src/app/(website)/products/page.tsx
-- src/app/(website)/products/[slug]/page.tsx
-- src/app/(website)/machines/page.tsx
-- src/app/(website)/industries/page.tsx
-- src/app/(website)/gallery/page.tsx
-- src/app/(website)/contact/page.tsx
 - README.md
 
 Extract patch contents into the root of your existing project, preserving directories.

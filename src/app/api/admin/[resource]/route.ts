@@ -28,19 +28,36 @@ export async function GET(req: NextRequest, { params }: Ctx) {
   );
   const search = req.nextUrl.searchParams.get("q")?.trim().slice(0, 100);
   const where: any = {};
-  if (search && [
-    "products", "categories", "machines", "industries", "gallery", "brands",
-    "inquiries", "pages", "seo", "settings",
-  ].includes(resource)) {
-    const field = resource === "inquiries" || resource === "products" || resource === "categories" || resource === "machines" || resource === "industries" || resource === "brands"
-      ? "name"
-      : resource === "gallery"
-        ? "title"
-        : resource === "pages"
+  if (
+    search &&
+    [
+      "products",
+      "categories",
+      "machines",
+      "industries",
+      "gallery",
+      "brands",
+      "inquiries",
+      "pages",
+      "seo",
+      "settings",
+    ].includes(resource)
+  ) {
+    const field =
+      resource === "inquiries" ||
+      resource === "products" ||
+      resource === "categories" ||
+      resource === "machines" ||
+      resource === "industries" ||
+      resource === "brands"
+        ? "name"
+        : resource === "gallery"
           ? "title"
-          : resource === "seo"
-            ? "path"
-            : "key";
+          : resource === "pages"
+            ? "title"
+            : resource === "seo"
+              ? "path"
+              : "key";
     where[field] = { contains: search, mode: "insensitive" };
   }
   try {
@@ -52,7 +69,9 @@ export async function GET(req: NextRequest, { params }: Ctx) {
         orderBy:
           resource === "settings" || resource === "seo"
             ? { updatedAt: "desc" }
-            : resource === "gallery" || resource === "brands" || resource === "pages"
+            : resource === "gallery" ||
+                resource === "brands" ||
+                resource === "pages"
               ? { sortOrder: "asc" }
               : { createdAt: "desc" },
         ...(includeFor[resource as ResourceKey]

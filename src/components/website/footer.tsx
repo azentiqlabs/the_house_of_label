@@ -11,19 +11,20 @@ export function Footer({ settings }: Props) {
     <footer className="footer">
       <div className="container footer-inner">
         <Link href="/" className="brand" aria-label={`${siteName} home`}>
-            <img src={logo} alt={siteName} />
+          <img src={logo} alt={siteName} />
         </Link>
         <div className="footer-links">
-          <a href="/about">About</a>
-          <a href="/products">Products</a>
-          <a href="/machines">Machines</a>
-          <a href="/industries">Industries</a>
-          <a href="/contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#machines">Machines</a>
+          <a href="#industries">Industries</a>
+          <a href="#contact">Contact</a>
         </div>
         {/* <span>© {new Date().getFullYear()} {siteName}. {note}</span> */}
-        <span>© {siteName}. {note}</span>
+        <span>
+          © {siteName}. {note}
+        </span>
       </div>
     </footer>
   );
 }
-

@@ -17,7 +17,11 @@ export async function createAdminSession(user: {
   role: string;
   sessionVersion: number;
 }) {
-  const token = await new SignJWT({ email: user.email, role: user.role, sessionVersion: user.sessionVersion })
+  const token = await new SignJWT({
+    email: user.email,
+    role: user.role,
+    sessionVersion: user.sessionVersion,
+  })
     .setProtectedHeader({ alg: "HS256" })
     .setSubject(user.id)
     .setIssuedAt()
@@ -40,11 +44,22 @@ export async function getAdminSession() {
     if (!payload.sub || typeof payload.email !== "string") return null;
     const user = await prisma.adminUser.findUnique({
       where: { id: payload.sub },
-      select: { id: true, name: true, email: true, role: true, isActive: true, sessionVersion: true },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        isActive: true,
+        sessionVersion: true,
+      },
     });
     if (!user?.isActive) return null;
     // Sessions created before session-version support are intentionally retired once after deployment.
-    if (typeof payload.sessionVersion !== "number" || payload.sessionVersion !== user.sessionVersion) return null;
+    if (
+      typeof payload.sessionVersion !== "number" ||
+      payload.sessionVersion !== user.sessionVersion
+    )
+      return null;
     return user;
   } catch {
     return null;

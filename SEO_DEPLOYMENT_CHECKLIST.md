@@ -17,8 +17,6 @@ Open these public URLs:
 - `https://thehouseoflabel.com/robots.txt`
 - `https://thehouseoflabel.com/sitemap.xml`
 - `https://thehouseoflabel.com/`
-- `https://thehouseoflabel.com/about`
-- `https://thehouseoflabel.com/products`
 
 Confirm that canonical URLs and sitemap entries use `https://thehouseoflabel.com`, not localhost or another domain. Sitemap entries should not include pages marked noindex or products with `noIndex=true`.
 

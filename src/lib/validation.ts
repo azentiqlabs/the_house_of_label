@@ -60,7 +60,10 @@ export const schemas = {
   }),
   gallery: z.object({
     title: text(160).min(1),
-    imageUrl: assetPath.refine((value) => value.length > 0, "Image URL is required."),
+    imageUrl: assetPath.refine(
+      (value) => value.length > 0,
+      "Image URL is required.",
+    ),
     category: text(100).min(1),
     altText: optionalText(250),
     sortOrder: z.coerce.number().int().min(0).default(0),
@@ -68,7 +71,10 @@ export const schemas = {
   }),
   brands: z.object({
     name: text(160).min(1),
-    logoUrl: assetPath.refine((value) => value.length > 0, "Logo URL is required."),
+    logoUrl: assetPath.refine(
+      (value) => value.length > 0,
+      "Logo URL is required.",
+    ),
     website: url,
     sortOrder: z.coerce.number().int().min(0).default(0),
     isActive: z.boolean().default(true),

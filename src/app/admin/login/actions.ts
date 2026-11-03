@@ -23,6 +23,11 @@ export async function loginAction(formData: FormData) {
     !(await bcrypt.compare(parsed.data.password, user.passwordHash))
   )
     redirect("/admin/login?error=invalid");
-  await createAdminSession({ id: user.id, email: user.email, role: user.role, sessionVersion: user.sessionVersion });
+  await createAdminSession({
+    id: user.id,
+    email: user.email,
+    role: user.role,
+    sessionVersion: user.sessionVersion,
+  });
   redirect("/admin/dashboard");
 }

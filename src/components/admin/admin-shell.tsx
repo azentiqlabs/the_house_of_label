@@ -32,7 +32,9 @@ type AdminShellProps = {
 const groups = [
   {
     title: "Workspace",
-    links: [{ label: "Overview", href: "/admin/dashboard", icon: LayoutDashboard }],
+    links: [
+      { label: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
+    ],
   },
   {
     title: "Website content",
@@ -40,29 +42,70 @@ const groups = [
       { label: "Products", href: "/admin/dashboard/products", icon: Package },
       { label: "Categories", href: "/admin/dashboard/categories", icon: Tags },
       { label: "Machines", href: "/admin/dashboard/machines", icon: Factory },
-      { label: "Industries", href: "/admin/dashboard/industries", icon: Building2 },
+      {
+        label: "Industries",
+        href: "/admin/dashboard/industries",
+        icon: Building2,
+      },
       { label: "Gallery", href: "/admin/dashboard/gallery", icon: Images },
-      { label: "Customer brands", href: "/admin/dashboard/brands", icon: UsersRound },
-      { label: "Page sections", href: "/admin/dashboard/pages", icon: PanelsTopLeft },
-      { label: "Quote inquiries", href: "/admin/dashboard/inquiries", icon: MessageSquareText },
+      {
+        label: "Customer brands",
+        href: "/admin/dashboard/brands",
+        icon: UsersRound,
+      },
+      {
+        label: "Page sections",
+        href: "/admin/dashboard/pages",
+        icon: PanelsTopLeft,
+      },
+      {
+        label: "Quote inquiries",
+        href: "/admin/dashboard/inquiries",
+        icon: MessageSquareText,
+      },
     ],
   },
   {
     title: "Configuration",
     links: [
       { label: "SEO pages", href: "/admin/dashboard/seo", icon: Search },
-      { label: "Site settings", href: "/admin/dashboard/settings", icon: Settings2 },
-      { label: "Account settings", href: "/admin/dashboard/account", icon: UserCog },
+      {
+        label: "Site settings",
+        href: "/admin/dashboard/settings",
+        icon: Settings2,
+      },
+      {
+        label: "Account settings",
+        href: "/admin/dashboard/account",
+        icon: UserCog,
+      },
     ],
   },
 ];
 
-function NavContent({ pathname, close }: { pathname: string; close?: () => void }) {
+function NavContent({
+  pathname,
+  close,
+}: {
+  pathname: string;
+  close?: () => void;
+}) {
   return (
     <>
       <div className="hol-admin-brand">
-        <Link href="/" className="hol-admin-logo" onClick={close} aria-label="The House Of Label public website">
-          <Image src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png" alt="The House Of Label" width={250} height={42} priority />
+        <Link
+          href="/"
+          className="hol-admin-logo"
+          onClick={close}
+          aria-label="The House Of Label public website"
+        >
+          <Image
+            src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png"
+            alt="The House Of Label"
+            width={250}
+            height={42}
+            priority
+          />
         </Link>
         <span className="hol-admin-brand-caption">WEBSITE CONTROL ROOM</span>
       </div>
@@ -72,9 +115,10 @@ function NavContent({ pathname, close }: { pathname: string; close?: () => void 
           <div className="hol-admin-nav-group" key={group.title}>
             <p className="hol-admin-nav-heading">{group.title}</p>
             {group.links.map(({ label, href, icon: Icon }) => {
-              const active = href === "/admin/dashboard"
-                ? pathname === href
-                : pathname === href || pathname.startsWith(`${href}/`);
+              const active =
+                href === "/admin/dashboard"
+                  ? pathname === href
+                  : pathname === href || pathname.startsWith(`${href}/`);
               return (
                 <Link
                   href={href}
@@ -85,7 +129,13 @@ function NavContent({ pathname, close }: { pathname: string; close?: () => void 
                 >
                   <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
                   <span>{label}</span>
-                  {active && <ChevronRight className="hol-admin-nav-chevron" size={15} aria-hidden="true" />}
+                  {active && (
+                    <ChevronRight
+                      className="hol-admin-nav-chevron"
+                      size={15}
+                      aria-hidden="true"
+                    />
+                  )}
                 </Link>
               );
             })}
@@ -95,8 +145,13 @@ function NavContent({ pathname, close }: { pathname: string; close?: () => void 
 
       <div className="hol-admin-sidebar-bottom">
         <div className="hol-admin-sidebar-note">
-          <span className="hol-admin-sidebar-note-icon"><Settings2 size={17} /></span>
-          <div><strong>Need to update the site?</strong><p>Changes here manage your live content.</p></div>
+          <span className="hol-admin-sidebar-note-icon">
+            <Settings2 size={17} />
+          </span>
+          <div>
+            <strong>Need to update the site?</strong>
+            <p>Changes here manage your live content.</p>
+          </div>
         </div>
         <Link href="/" target="_blank" className="hol-admin-website-link">
           <ExternalLink size={16} aria-hidden="true" /> View public website
@@ -109,11 +164,22 @@ function NavContent({ pathname, close }: { pathname: string; close?: () => void 
 export function AdminShell({ user, children }: AdminShellProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const activeLink = groups.flatMap((group) => group.links).find((link) =>
-    link.href === "/admin/dashboard" ? pathname === link.href : pathname === link.href || pathname.startsWith(`${link.href}/`),
-  );
+  const activeLink = groups
+    .flatMap((group) => group.links)
+    .find((link) =>
+      link.href === "/admin/dashboard"
+        ? pathname === link.href
+        : pathname === link.href || pathname.startsWith(`${link.href}/`),
+    );
   const section = activeLink?.label ?? "Admin";
-  const initials = user.name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase() || "A";
+  const initials =
+    user.name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join("")
+      .toUpperCase() || "A";
 
   return (
     <div className="hol-admin">
@@ -123,10 +189,28 @@ export function AdminShell({ user, children }: AdminShellProps) {
 
       {mobileOpen && (
         <div className="hol-admin-mobile-layer">
-          <button type="button" className="hol-admin-mobile-scrim" onClick={() => setMobileOpen(false)} aria-label="Close navigation" />
-          <aside className="hol-admin-mobile-sidebar" aria-label="Mobile navigation">
-            <button type="button" className="hol-admin-mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close navigation"><X size={21} /></button>
-            <NavContent pathname={pathname} close={() => setMobileOpen(false)} />
+          <button
+            type="button"
+            className="hol-admin-mobile-scrim"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close navigation"
+          />
+          <aside
+            className="hol-admin-mobile-sidebar"
+            aria-label="Mobile navigation"
+          >
+            <button
+              type="button"
+              className="hol-admin-mobile-close"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close navigation"
+            >
+              <X size={21} />
+            </button>
+            <NavContent
+              pathname={pathname}
+              close={() => setMobileOpen(false)}
+            />
           </aside>
         </div>
       )}
@@ -134,23 +218,54 @@ export function AdminShell({ user, children }: AdminShellProps) {
       <div className="hol-admin-main">
         <header className="hol-admin-topbar">
           <div className="hol-admin-topbar-left">
-            <button type="button" className="hol-admin-menu-button" onClick={() => setMobileOpen(true)} aria-label="Open navigation"><Menu size={21} /></button>
+            <button
+              type="button"
+              className="hol-admin-menu-button"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open navigation"
+            >
+              <Menu size={21} />
+            </button>
             <div>
-              <div className="hol-admin-breadcrumb"><span>Admin workspace</span><ChevronRight size={14} aria-hidden="true" /><strong>{section}</strong></div>
-              <p className="hol-admin-topbar-subtitle">Manage your website content and enquiries</p>
+              <div className="hol-admin-breadcrumb">
+                <span>Admin workspace</span>
+                <ChevronRight size={14} aria-hidden="true" />
+                <strong>{section}</strong>
+              </div>
+              <p className="hol-admin-topbar-subtitle">
+                Manage your website content and enquiries
+              </p>
             </div>
           </div>
           <div className="hol-admin-user-menu">
-            <div className="hol-admin-user-avatar" aria-hidden="true">{initials}</div>
-            <div className="hol-admin-user-copy"><strong>{user.name}</strong><span>{user.role.replaceAll("_", " ")}</span></div>
+            <div className="hol-admin-user-avatar" aria-hidden="true">
+              {initials}
+            </div>
+            <div className="hol-admin-user-copy">
+              <strong>{user.name}</strong>
+              <span>{user.role.replaceAll("_", " ")}</span>
+            </div>
             <form action="/admin/logout" method="post">
-              <button className="hol-admin-logout" type="submit" title="Sign out" aria-label="Sign out"><LogOut size={17} /><span>Sign out</span></button>
+              <button
+                className="hol-admin-logout"
+                type="submit"
+                title="Sign out"
+                aria-label="Sign out"
+              >
+                <LogOut size={17} />
+                <span>Sign out</span>
+              </button>
             </form>
           </div>
         </header>
-        <main className="hol-admin-content" key={pathname}>{children}</main>
+        <main className="hol-admin-content" key={pathname}>
+          {children}
+        </main>
         {/* <footer className="hol-admin-footer"><span>© {new Date().getFullYear()} The House Of Label</span><span>Website content management</span></footer> */}
-        <footer className="hol-admin-footer"><span>© The House Of Label</span><span>Website content management</span></footer>
+        <footer className="hol-admin-footer">
+          <span>© The House Of Label</span>
+          <span>Website content management</span>
+        </footer>
       </div>
     </div>
   );

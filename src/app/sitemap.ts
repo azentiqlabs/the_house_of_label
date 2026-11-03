@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { prisma } from "@/lib/prisma";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -25,31 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const products = await prisma.product.findMany({
-      where: {
-        status: "PUBLISHED",
-        noIndex: false,
-      },
-      select: {
-        slug: true,
-        updatedAt: true,
-        canonicalUrl: true,
-      },
-    });
-
-    const productPages: MetadataRoute.Sitemap = products
-      .filter((product) => product.slug?.trim())
-      .map((product) => ({
-        // Keep the sitemap URL aligned with the product page canonical.
-        url: product.canonicalUrl?.trim()
-          ? product.canonicalUrl.trim()
-          : `${base}/products/${product.slug}`,
-        lastModified: product.updatedAt,
-        changeFrequency: "monthly",
-        priority: 0.8,
-      }));
-
-    return [...homepage, ...productPages];
+    return [...homepage];
   } catch (error) {
     console.error("Could not generate product sitemap entries:", error);
     // The homepage remains discoverable if the product database is unavailable.

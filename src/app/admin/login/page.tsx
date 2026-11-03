@@ -31,7 +31,11 @@ export default async function AdminLoginPage({
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col px-5 sm:px-8 lg:px-12">
         <header className="flex min-h-[82px] items-center justify-between gap-4 border-b border-[#d8eaf5] py-4">
-          <Link href="/" aria-label="The House Of Label home" className="shrink-0">
+          <Link
+            href="/"
+            aria-label="The House Of Label home"
+            className="shrink-0"
+          >
             <Image
               src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png"
               alt="The House Of Label"
@@ -95,16 +99,37 @@ export default async function AdminLoginPage({
 
             <div className="relative z-10 grid grid-cols-3 rounded-[14px] border border-[#d7eaf6] bg-white/75 px-2 py-4 shadow-[0_8px_28px_rgba(8,63,103,0.04)] backdrop-blur-sm sm:px-4">
               <div className="px-2 sm:px-3">
-                <PanelsTopLeft aria-hidden="true" size={18} strokeWidth={1.7} className="mb-2 text-[#0876bd]" />
-                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">Website pages</p>
+                <PanelsTopLeft
+                  aria-hidden="true"
+                  size={18}
+                  strokeWidth={1.7}
+                  className="mb-2 text-[#0876bd]"
+                />
+                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">
+                  Website pages
+                </p>
               </div>
               <div className="border-l border-[#d8eaf5] px-3">
-                <Package aria-hidden="true" size={18} strokeWidth={1.7} className="mb-2 text-[#0876bd]" />
-                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">Product catalogue</p>
+                <Package
+                  aria-hidden="true"
+                  size={18}
+                  strokeWidth={1.7}
+                  className="mb-2 text-[#0876bd]"
+                />
+                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">
+                  Product catalogue
+                </p>
               </div>
               <div className="border-l border-[#d8eaf5] px-3">
-                <CheckCircle2 aria-hidden="true" size={18} strokeWidth={1.7} className="mb-2 text-[#0876bd]" />
-                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">Enquiries</p>
+                <CheckCircle2
+                  aria-hidden="true"
+                  size={18}
+                  strokeWidth={1.7}
+                  className="mb-2 text-[#0876bd]"
+                />
+                <p className="text-[11px] font-bold leading-4 text-[#123653] sm:text-xs">
+                  Enquiries
+                </p>
               </div>
             </div>
           </aside>
@@ -133,7 +158,9 @@ export default async function AdminLoginPage({
                   className="mb-5 rounded-[10px] border border-red-200 bg-red-50 px-4 py-3 text-[13px] leading-5 text-red-800"
                 >
                   <p className="font-bold">Unable to sign in</p>
-                  <p className="mt-0.5">Email or password is incorrect. Please try again.</p>
+                  <p className="mt-0.5">
+                    Email or password is incorrect. Please try again.
+                  </p>
                 </div>
               )}
 
@@ -190,7 +217,9 @@ export default async function AdminLoginPage({
                   className="mt-0.5 shrink-0 text-[#0b5a8e]"
                 />
                 <p className="text-[12px] leading-5 text-[#60798d]">
-                  <span className="font-bold text-[#123653]">Secure administrator access.</span>{" "}
+                  <span className="font-bold text-[#123653]">
+                    Secure administrator access.
+                  </span>{" "}
                   This area is limited to authorized website administrators.
                 </p>
               </div>
