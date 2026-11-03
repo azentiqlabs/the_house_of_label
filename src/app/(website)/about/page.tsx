@@ -8,11 +8,11 @@ export async function generateMetadata() {
   const data = await getHomeData();
   const about = data.sections.home_about;
   return getManagedMetadata("/about", {
-    title: about?.seoTitle?.trim() || "About The House of Labels",
+    title: about?.seoTitle?.trim() || "About The House Of Label",
     description:
       about?.seoDescription?.trim() ||
       about?.description ||
-      "Learn about The House of Labels, our label solutions, capabilities and approach to customer requirements.",
+      "Learn about The House Of Label, our label solutions, capabilities and approach to customer requirements.",
     image: about?.imageUrl,
   });
 }
@@ -32,15 +32,15 @@ export default async function AboutPage() {
     <section className="section">
       <div className="container max-w-5xl">
         <p className="eyebrow">{about?.subtitle || "Who we are"}</p>
-        <h1 className="section-title mt-3">About The House of Labels</h1>
+        <h1 className="section-title mt-3">About The House Of Label</h1>
         <p className="muted mt-5 max-w-4xl leading-8">
           {about?.description ||
-            "The House of Labels provides printed, unprinted and thermal label solutions for product packaging, identification and shipping applications."}
+            "The House Of Label provides printed, unprinted and thermal label solutions for product packaging, identification and shipping applications."}
         </p>
         {about?.imageUrl && (
           <img
             src={about.imageUrl}
-            alt="The House of Labels label products and capabilities"
+            alt="The House Of Label label products and capabilities"
             className="mt-8 max-h-[440px] w-full rounded-2xl object-cover"
           />
         )}

@@ -42,7 +42,7 @@ const sectionInfo: Record<string, SectionInfo> = {
   home_feature_3: { label: "Benefit 3", group: "Quick benefits", help: "A short benefit shown below the main banner." },
   home_feature_4: { label: "Benefit 4", group: "Quick benefits", help: "A short benefit shown below the main banner." },
   home_promo: { label: "Promotional message", group: "First impression", help: "A highlighted message and button between homepage sections." },
-  home_about: { label: "About the company", group: "Company information", help: "Introduce The House of Labels and explain what makes the company useful to customers." },
+  home_about: { label: "About the company", group: "Company information", help: "Introduce The House Of Label and explain what makes the company useful to customers." },
   home_vision: { label: "Our vision", group: "Company information", help: "Explain what the company aims to become." },
   home_mission: { label: "Our mission", group: "Company information", help: "Explain the company's purpose and what it works to deliver." },
   home_strength: { label: "Our strength", group: "Company information", help: "Describe your experience, production knowledge and key capabilities." },

@@ -38,13 +38,13 @@ type SeoDraft = {
 };
 
 const standardPages = [
-  { path: "/", label: "Home page", description: "Your main business and product introduction.", title: "Printed & Custom Label Manufacturer", meta: "The House of Labels provides printed, unprinted and thermal label solutions for product packaging, barcodes, shipping and identification applications." },
-  { path: "/about", label: "About us", description: "Your company story, mission, vision and capabilities.", title: "About The House of Labels", meta: "Learn about The House of Labels, our label solutions, production capabilities and approach to customer requirements." },
+  { path: "/", label: "Home page", description: "Your main business and product introduction.", title: "Printed & Custom Label Manufacturer", meta: "The House Of Label provides printed, unprinted and thermal label solutions for product packaging, barcodes, shipping and identification applications." },
+  { path: "/about", label: "About us", description: "Your company story, mission, vision and capabilities.", title: "About The House Of Label", meta: "Learn about The House Of Label, our label solutions, production capabilities and approach to customer requirements." },
   { path: "/products", label: "Products", description: "Your product catalogue and label types.", title: "Printed, Unprinted & Thermal Labels", meta: "Explore printed labels, unprinted label rolls, thermal labels and custom label solutions for packaging, product identification and shipping." },
   { path: "/machines", label: "Machines", description: "Your label production and finishing capabilities.", title: "Label Printing & Finishing Machines", meta: "Explore the printing, slitting, die-cutting and rewinding equipment used to support label production and finishing." },
   { path: "/industries", label: "Industries", description: "The industries and applications you serve.", title: "Label Solutions for Different Industries", meta: "Explore label applications for food and dairy, FMCG, personal care, pharmaceuticals, chemicals, retail and logistics." },
-  { path: "/gallery", label: "Gallery", description: "Product, machine and facility photographs.", title: "Label Products & Manufacturing Gallery", meta: "View printed product labels, thermal label rolls, production equipment and label application examples from The House of Labels." },
-  { path: "/contact", label: "Contact", description: "Contact details and quotation enquiries.", title: "Request a Custom Label Printing Quote", meta: "Contact The House of Labels to discuss printed, unprinted or thermal label requirements and request a quotation." },
+  { path: "/gallery", label: "Gallery", description: "Product, machine and facility photographs.", title: "Label Products & Manufacturing Gallery", meta: "View printed product labels, thermal label rolls, production equipment and label application examples from The House Of Label." },
+  { path: "/contact", label: "Contact", description: "Contact details and quotation enquiries.", title: "Request a Custom Label Printing Quote", meta: "Contact The House Of Label to discuss printed, unprinted or thermal label requirements and request a quotation." },
 ];
 
 const initialDraft = (path: string): SeoDraft => {

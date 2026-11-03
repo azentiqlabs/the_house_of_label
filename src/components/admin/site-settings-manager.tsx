@@ -46,7 +46,7 @@ type SettingGroup = {
 };
 
 const defaultValues: Record<string, string> = {
-  site_name: "The House of Labels",
+  site_name: "The House Of Label",
   site_tagline: "LABELS THAT RUN BETTER",
   site_logo_url: "/theme/THE_HOUSE_OF_LABEL_LOGO02.png",
   contact_phone: "+91 XXXXX XXXXX (demo)",
@@ -73,7 +73,7 @@ const groups: SettingGroup[] = [
     description: "These details appear in your website header, browser and brand areas.",
     icon: Building2,
     fields: [
-      { key: "site_name", label: "Business name", help: "The name visitors see across the website.", placeholder: "The House of Labels" },
+      { key: "site_name", label: "Business name", help: "The name visitors see across the website.", placeholder: "The House Of Label" },
       { key: "site_tagline", label: "Brand tagline", help: "A short sentence that communicates what your business stands for.", placeholder: "Labels that run better" },
       { key: "site_logo_url", label: "Website logo", kind: "image", help: "Upload your logo as a PNG, JPG, WebP or GIF. A transparent PNG works well on a white background." },
     ],

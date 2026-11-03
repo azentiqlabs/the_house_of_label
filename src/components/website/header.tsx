@@ -20,7 +20,7 @@ type Props = { settings: Record<string, string> };
 export function Header({ settings }: Props) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const siteName = settings.site_name || "The House of Labels";
+  const siteName = settings.site_name || "The House Of Label";
   const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
 
   return (

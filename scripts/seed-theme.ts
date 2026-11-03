@@ -11,7 +11,7 @@ const sections = [
   { sectionKey: "home_feature_3", title: "Fast\nDeliveries", subtitle: "↗", sortOrder: 3 },
   { sectionKey: "home_feature_4", title: "Custom Solutions\nfor Your Needs", subtitle: "⚙", sortOrder: 4 },
   { sectionKey: "home_promo", title: "Better labels. Smoother lines. Stronger brands.", subtitle: "From concept to conversion", description: "Printed, unprinted and thermal label solutions designed around your application.", buttonText: "Explore Label Types", buttonUrl: "#products", sortOrder: 5 },
-  { sectionKey: "home_about", title: "About The House of Labels", subtitle: "Who we are", description: "The House of Labels is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.", imageUrl: "/theme/image2.jpeg", buttonText: "Learn More", buttonUrl: "#what-we-do", sortOrder: 6 },
+  { sectionKey: "home_about", title: "About The House Of Label", subtitle: "Who we are", description: "The House Of Label is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.", imageUrl: "/theme/image2.jpeg", buttonText: "Learn More", buttonUrl: "#what-we-do", sortOrder: 6 },
   { sectionKey: "home_vision", title: "Our Vision", description: "To become a trusted partner for brands by delivering reliable, innovative, and performance-driven label solutions.", sortOrder: 7 },
   { sectionKey: "home_mission", title: "Our Mission", description: "To provide labels that run better, look better, and cost better.", sortOrder: 8 },
   { sectionKey: "home_strength", title: "Our Strength", description: "Expertise in adhesives, materials, printing, accurate alignment, die-cutting accuracy, and roll form optimization.", sortOrder: 9 },
@@ -23,7 +23,7 @@ const sections = [
   { sectionKey: "home_what_custom", title: "Custom Label Formats", subtitle: "✳", description: "Application-led discussions around dimensions, roll format, adhesive and use conditions.", buttonText: "Discuss your needs", buttonUrl: "#contact", sortOrder: 15 },
   { sectionKey: "home_products_heading", title: "Our Products", subtitle: "Explore our range", description: "We manufacture and supply a wide range of label solutions for diverse applications.", sortOrder: 16 },
   { sectionKey: "home_machines_heading", title: "Our Machines", subtitle: "Built for precision", description: "Advanced technology for precision, quality and consistency.", sortOrder: 17 },
-  { sectionKey: "home_why_heading", title: "Practical expertise. Consistent performance.", subtitle: "Why The House of Labels?", description: "We balance label appearance with how labels behave on your application and production line.", sortOrder: 18 },
+  { sectionKey: "home_why_heading", title: "Practical expertise. Consistent performance.", subtitle: "Why The House Of Label?", description: "We balance label appearance with how labels behave on your application and production line.", sortOrder: 18 },
   { sectionKey: "home_why_card_1", title: "Material Knowledge", subtitle: "✓", description: "Consideration of facestock, adhesive and liner choices, including suitable standard and specialty stocks.", sortOrder: 19 },
   { sectionKey: "home_why_card_2", title: "Application-led Development", subtitle: "⚙", description: "Label discussions start with the package, environment and application method.", sortOrder: 20 },
   { sectionKey: "home_why_card_3", title: "Line Performance", subtitle: "◎", description: "Focus on dispensing accuracy, roll-form requirements and die-cutting consistency.", sortOrder: 21 },
@@ -35,7 +35,7 @@ const sections = [
 ];
 
 const settingEntries: Array<[string, string]> = [
-  ["site_name", "The House of Labels"],
+  ["site_name", "The House Of Label"],
   ["site_tagline", "LABELS THAT RUN BETTER"],
   ["site_logo_url", "/theme/THE_HOUSE_OF_LABEL_LOGO02.png"],
   ["whatsapp_number", ""],
@@ -98,7 +98,7 @@ const gallery = [
   { title: "Label converting machine", imageUrl: "/theme/image3.jpeg", category: "machines", altText: "Label converting and slitting machine", sortOrder: 5 },
   { title: "Industrial label machine", imageUrl: "/theme/image5.jpeg", category: "machines", altText: "Industrial label machine", sortOrder: 6 },
   { title: "Thermal paper rolls", imageUrl: "/theme/image12.jpeg", category: "products", altText: "Thermal label paper rolls", sortOrder: 7 },
-  { title: "The House of Labels facility", imageUrl: "/theme/image1.jpeg", category: "facility", altText: "The House of Labels facility", sortOrder: 8 },
+  { title: "The House Of Label facility", imageUrl: "/theme/image1.jpeg", category: "facility", altText: "The House Of Label facility", sortOrder: 8 },
 ];
 
 const brands = [
@@ -111,7 +111,7 @@ const brands = [
 ];
 
 async function main() {
-  console.log("Seeding The House of Labels CMS theme content…");
+  console.log("Seeding The House Of Label CMS theme content…");
 
   for (const section of sections) {
     await prisma.pageContent.upsert({

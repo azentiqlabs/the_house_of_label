@@ -3,7 +3,7 @@ import Link from "next/link";
 type Props = { settings: Record<string, string> };
 
 export function Footer({ settings }: Props) {
-  const siteName = settings.site_name || "The House of Labels";
+  const siteName = settings.site_name || "The House Of Label";
   const note = settings.footer_note || "All rights reserved.";
   const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
 

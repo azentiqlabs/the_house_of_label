@@ -1,4 +1,4 @@
-# The House of Labels — Next.js CMS Website
+# The House Of Label — Next.js CMS Website
 
 The supplied HTML/CSS theme is now integrated into the Next.js App Router project using TypeScript, PostgreSQL and Prisma. The public homepage keeps the supplied light-blue theme, imagery, product/gallery filters, machinery selector, scrolling partner strip and responsive navigation.
 

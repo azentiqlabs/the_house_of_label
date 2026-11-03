@@ -66,9 +66,9 @@ export function HomePage({ data }: Props) {
   const shownProducts = data.products.filter((product) => productFilter === "all" || productGroup(product) === productFilter);
   const shownGallery = data.gallery.filter((item) => galleryFilter === "all" || item.category.toLowerCase().replace(/\s+/g, "-") === galleryFilter);
   const phone = (settings.whatsapp_number || "").replace(/\D/g, "");
-  const whatsAppUrl = phone.length >= 10 ? `https://wa.me/${phone}?text=${encodeURIComponent("Hello The House of Labels, I would like to discuss my label requirements and request a quotation.")}` : "#contact";
+  const whatsAppUrl = phone.length >= 10 ? `https://wa.me/${phone}?text=${encodeURIComponent("Hello The House Of Label, I would like to discuss my label requirements and request a quotation.")}` : "#contact";
   const logoUrl = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
-  const companyName = settings.site_name || "The House of Labels";
+  const companyName = settings.site_name || "The House Of Label";
   const tagline = settings.site_tagline || "LABELS THAT RUN BETTER";
   const contactPhone = publicSetting(settings.contact_phone);
   const contactEmail = publicSetting(settings.contact_email);
@@ -184,7 +184,7 @@ export function HomePage({ data }: Props) {
                   {about?.buttonText && <a className="about-learn-link" href={sectionHref(about, "#what-we-do")}>{about.buttonText} <span aria-hidden="true">→</span></a>}
                 </div>
                 <div className="about-reference-photo">
-                  <img src={safeImage(about?.imageUrl, "/theme/image2.jpeg")} alt="The House of Labels manufacturing facility" loading="lazy" />
+                  <img src={safeImage(about?.imageUrl, "/theme/image2.jpeg")} alt="The House Of Label manufacturing facility" loading="lazy" />
                 </div>
               </div>
               <div className="about-reference-values">
@@ -263,7 +263,7 @@ export function HomePage({ data }: Props) {
         {visible(whyHeading) && (
           <section className="section soft" id="why-us">
             <div className="container">
-              <div className="section-heading"><div><div className="eyebrow">{whyHeading?.subtitle || "Why The House of Labels?"}</div><h2>{whyHeading?.title}</h2></div><p>{sectionText(whyHeading)}</p></div>
+              <div className="section-heading"><div><div className="eyebrow">{whyHeading?.subtitle || "Why The House Of Label?"}</div><h2>{whyHeading?.title}</h2></div><p>{sectionText(whyHeading)}</p></div>
               <div className="what-grid">
                 {[1, 2, 3, 4].map((number) => {
                   const item = get(`home_why_card_${number}`);

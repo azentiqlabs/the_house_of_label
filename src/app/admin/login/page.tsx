@@ -31,10 +31,10 @@ export default async function AdminLoginPage({
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1320px] flex-col px-5 sm:px-8 lg:px-12">
         <header className="flex min-h-[82px] items-center justify-between gap-4 border-b border-[#d8eaf5] py-4">
-          <Link href="/" aria-label="The House of Labels home" className="shrink-0">
+          <Link href="/" aria-label="The House Of Label home" className="shrink-0">
             <Image
               src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png"
-              alt="The House of Labels"
+              alt="The House Of Label"
               width={2048}
               height={260}
               priority
@@ -199,8 +199,8 @@ export default async function AdminLoginPage({
         </div>
 
         <footer className="relative flex flex-wrap items-center justify-between gap-3 border-t border-[#d8eaf5] py-4 text-[11px] text-[#60798d]">
-          {/* <span>© {new Date().getFullYear()} The House of Labels</span> */}
-          <span>© The House of Labels</span>
+          {/* <span>© {new Date().getFullYear()} The House Of Label</span> */}
+          <span>© The House Of Label</span>
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck aria-hidden="true" size={14} strokeWidth={1.8} />
             Authorized access only

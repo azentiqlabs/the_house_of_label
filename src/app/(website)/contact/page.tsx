@@ -13,7 +13,7 @@ export async function generateMetadata() {
   return getManagedMetadata("/contact", {
     title: "Request a Custom Label Printing Quote",
     description:
-      "Contact The House of Labels to discuss printed, unprinted or thermal label requirements and request a quotation.",
+      "Contact The House Of Label to discuss printed, unprinted or thermal label requirements and request a quotation.",
   });
 }
 
@@ -40,7 +40,7 @@ export default async function ContactPage() {
             <QuoteForm />
           </div>
           <aside className="card p-6 md:p-8">
-            <h2 className="text-xl font-bold">Contact The House of Labels</h2>
+            <h2 className="text-xl font-bold">Contact The House Of Label</h2>
             <p className="muted mt-3 text-sm leading-7">
               For product, packaging and label enquiries, send your requirements using the quotation form.
             </p>

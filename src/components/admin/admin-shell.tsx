@@ -61,8 +61,8 @@ function NavContent({ pathname, close }: { pathname: string; close?: () => void 
   return (
     <>
       <div className="hol-admin-brand">
-        <Link href="/" className="hol-admin-logo" onClick={close} aria-label="The House of Labels public website">
-          <Image src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png" alt="The House of Labels" width={250} height={42} priority />
+        <Link href="/" className="hol-admin-logo" onClick={close} aria-label="The House Of Label public website">
+          <Image src="/theme/THE_HOUSE_OF_LABEL_LOGO02.png" alt="The House Of Label" width={250} height={42} priority />
         </Link>
         <span className="hol-admin-brand-caption">WEBSITE CONTROL ROOM</span>
       </div>
@@ -149,8 +149,8 @@ export function AdminShell({ user, children }: AdminShellProps) {
           </div>
         </header>
         <main className="hol-admin-content" key={pathname}>{children}</main>
-        {/* <footer className="hol-admin-footer"><span>© {new Date().getFullYear()} The House of Labels</span><span>Website content management</span></footer> */}
-        <footer className="hol-admin-footer"><span>© The House of Labels</span><span>Website content management</span></footer>
+        {/* <footer className="hol-admin-footer"><span>© {new Date().getFullYear()} The House Of Label</span><span>Website content management</span></footer> */}
+        <footer className="hol-admin-footer"><span>© The House Of Label</span><span>Website content management</span></footer>
       </div>
     </div>
   );

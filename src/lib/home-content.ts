@@ -96,10 +96,10 @@ const defaultSections: HomeSection[] = [
   },
   {
     sectionKey: "home_about",
-    title: "About The House of Labels",
+    title: "About The House Of Label",
     subtitle: "Who we are",
     description:
-      "The House of Labels is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.",
+      "The House Of Label is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.",
     imageUrl: "/theme/image2.jpeg",
     buttonText: "Learn More",
     buttonUrl: "#what-we-do",
@@ -148,7 +148,7 @@ const defaultSections: HomeSection[] = [
   { sectionKey: "home_what_custom", title: "Custom Label Formats", subtitle: "✳", description: "Application-led discussions around dimensions, roll format, adhesive and use conditions.", buttonText: "Discuss your needs", buttonUrl: "#contact", status: "PUBLISHED", sortOrder: 15 },
   { sectionKey: "home_products_heading", title: "Our Products", subtitle: "Explore our range", description: "We manufacture and supply a wide range of label solutions for diverse applications.", status: "PUBLISHED", sortOrder: 16 },
   { sectionKey: "home_machines_heading", title: "Our Machines", subtitle: "Built for precision", description: "Advanced technology for precision, quality and consistency.", status: "PUBLISHED", sortOrder: 17 },
-  { sectionKey: "home_why_heading", title: "Practical expertise. Consistent performance.", subtitle: "Why The House of Labels?", description: "We balance label appearance with how labels behave on your application and production line.", status: "PUBLISHED", sortOrder: 18 },
+  { sectionKey: "home_why_heading", title: "Practical expertise. Consistent performance.", subtitle: "Why The House Of Label?", description: "We balance label appearance with how labels behave on your application and production line.", status: "PUBLISHED", sortOrder: 18 },
   { sectionKey: "home_why_card_1", title: "Material Knowledge", subtitle: "✓", description: "Consideration of facestock, adhesive and liner choices, including suitable standard and specialty stocks.", status: "PUBLISHED", sortOrder: 19 },
   { sectionKey: "home_why_card_2", title: "Application-led Development", subtitle: "⚙", description: "Label discussions start with the package, environment and application method.", status: "PUBLISHED", sortOrder: 20 },
   { sectionKey: "home_why_card_3", title: "Line Performance", subtitle: "◎", description: "Focus on dispensing accuracy, roll-form requirements and die-cutting consistency.", status: "PUBLISHED", sortOrder: 21 },
@@ -160,7 +160,7 @@ const defaultSections: HomeSection[] = [
 ];
 
 const defaultSettings: Record<string, string> = {
-  site_name: "The House of Labels",
+  site_name: "The House Of Label",
   site_tagline: "LABELS THAT RUN BETTER",
   site_logo_url: "/theme/THE_HOUSE_OF_LABEL_LOGO02.png",
   whatsapp_number: "",
@@ -216,7 +216,7 @@ const defaultGallery: HomeGalleryItem[] = [
   { id: "demo-gallery-5", title: "Label converting machine", imageUrl: "/theme/image3.jpeg", category: "machines", altText: "Label converting and slitting machine" },
   { id: "demo-gallery-6", title: "Industrial label machine", imageUrl: "/theme/image5.jpeg", category: "machines", altText: "Industrial label machine" },
   { id: "demo-gallery-7", title: "Thermal paper rolls", imageUrl: "/theme/image12.jpeg", category: "products", altText: "Thermal label paper rolls" },
-  { id: "demo-gallery-8", title: "The House of Labels facility", imageUrl: "/theme/image1.jpeg", category: "facility", altText: "The House of Labels facility" },
+  { id: "demo-gallery-8", title: "The House Of Label facility", imageUrl: "/theme/image1.jpeg", category: "facility", altText: "The House Of Label facility" },
 ];
 
 const defaultBrands: HomeBrand[] = [

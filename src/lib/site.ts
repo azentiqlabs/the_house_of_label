@@ -24,9 +24,9 @@ function resolveSiteUrl(): string {
 }
 
 export const siteConfig = {
-  name: "The House of Labels",
+  name: "The House Of Label",
   description:
-    "The House of Labels is a custom label printer in Sanaswadi, Maharashtra, providing printed label solutions for product packaging, barcodes, shipping and identification applications.",
+    "The House Of Label is a custom label printing business in Sanaswadi, Maharashtra, India, offering printed product packaging labels, personal care labels, QR code stickers, thermal labels, barcode labels, shipping labels, and identification labels.",
   url: resolveSiteUrl(),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 };

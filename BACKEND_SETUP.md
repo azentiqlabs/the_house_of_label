@@ -1,4 +1,4 @@
-# The House of Labels — backend and CMS
+# The House Of Label — backend and CMS
 
 ## Stack
 

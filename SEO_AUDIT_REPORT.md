@@ -1,4 +1,4 @@
-# The House of Labels — SEO code audit
+# The House Of Label — SEO code audit
 
 ## Source-code findings
 
