@@ -3903,3 +3903,58 @@ body {
   opacity: 0.35;
   cursor: not-allowed;
 }
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-app-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.social-app-icon:hover {
+  transform: scale(1.08);
+}
+
+/* WhatsApp */
+.social-whatsapp {
+  background: #00d95f;
+}
+
+/* Instagram - original brand gradient */
+.social-instagram {
+  background: linear-gradient(
+    45deg,
+    #feda75 0%,
+    #fa7e1e 25%,
+    #d62976 50%,
+    #962fbf 75%,
+    #4f5bd5 100%
+  );
+}
+
+/* Facebook */
+.social-facebook {
+  background: #1877f2;
+}
+
+/* LinkedIn */
+.social-linkedin {
+  background: #0a66c2;
+}
+
+/* YouTube */
+.social-youtube {
+  background: #ff0000;
+}

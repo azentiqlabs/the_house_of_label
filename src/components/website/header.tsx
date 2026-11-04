@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { siteConfig } from "@/lib/site";
 
 const navLinks = [
   { setting: "nav_home", label: "Home", href: "/" },
@@ -20,7 +21,7 @@ type Props = { settings: Record<string, string> };
 export function Header({ settings }: Props) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const siteName = settings.site_name || "The House Of Label";
+  const siteName = siteConfig.name;
   const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
 
   return (

@@ -24,7 +24,7 @@ import type {
   HomeSection,
 } from "@/lib/home-content";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { siteConfig } from "@/lib/site";
 
 type Props = { data: HomeData };
 
@@ -112,7 +112,7 @@ export function HomePage({ data }: Props) {
       : "#contact";
   const logoUrl =
     settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
-  const companyName = settings.site_name || "The House Of Label";
+  const companyName = siteConfig.name;
   const tagline = settings.site_tagline || "LABELS THAT RUN BETTER";
   const contactPhone = publicSetting(settings.contact_phone);
   const contactEmail = publicSetting(settings.contact_email);
@@ -283,7 +283,7 @@ export function HomePage({ data }: Props) {
                           <span key={`${part}-${lineIndex}`}>
                             {part}
                             {lineIndex <
-                              lines(feature?.title || "").length - 1 ? (
+                            lines(feature?.title || "").length - 1 ? (
                               <br />
                             ) : null}
                           </span>
@@ -328,9 +328,9 @@ export function HomePage({ data }: Props) {
                     {about?.subtitle || "Who we are"}
                   </div>
                   <h2>
-                    {about?.title?.startsWith("About The House of ") ? (
+                    {about?.title?.startsWith("About The House Of Label") ? (
                       <>
-                        About The House of <em>Labels</em>
+                        About <em>The House Of Label</em>
                       </>
                     ) : (
                       about?.title
@@ -349,7 +349,7 @@ export function HomePage({ data }: Props) {
                 <div className="about-reference-photo">
                   <img
                     src={safeImage(about?.imageUrl, "/theme/image2.jpeg")}
-                    alt="The House Of Label manufacturing facility"
+                    alt="The House Of Label label printing facility"
                     loading="lazy"
                   />
                 </div>
@@ -496,117 +496,58 @@ export function HomePage({ data }: Props) {
                   <div className="eyebrow">
                     {productsHeading?.subtitle || "Explore our range"}
                   </div>
-
                   <h2>{productsHeading?.title || "Our Products"}</h2>
-
                   <p>{sectionText(productsHeading)}</p>
                 </div>
-
                 <a href="#contact" className="btn btn-orange">
                   Need a custom label? →
                 </a>
               </div>
-
-              <div className="products-carousel">
-                <button
-                  type="button"
-                  className="products-prev"
-                  aria-label="Previous products"
-                >
-                  <ChevronLeft size={22} strokeWidth={2} />
-                </button>
-                <Swiper
-                  className="products-swiper"
-                  modules={[Grid, Navigation]}
-                  // navigation
-                  navigation={{
-                    prevEl: ".products-prev",
-                    nextEl: ".products-next",
-                  }}
-                  grid={{
-                    rows: 2,
-                    fill: "row",
-                  }}
-                  slidesPerView={4}
-                  slidesPerGroup={4}
-                  spaceBetween={20}
-                  speed={500}
-                  watchOverflow
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1,
-                      slidesPerGroup: 1,
-                      grid: {
-                        rows: 1,
-                        fill: "row",
-                      },
-                      spaceBetween: 14,
-                    },
-                    576: {
-                      slidesPerView: 2,
-                      slidesPerGroup: 2,
-                      grid: {
-                        rows: 2,
-                        fill: "row",
-                      },
-                      spaceBetween: 16,
-                    },
-                    1024: {
-                      slidesPerView: 4,
-                      slidesPerGroup: 4,
-                      grid: {
-                        rows: 2,
-                        fill: "row",
-                      },
-                      spaceBetween: 20,
-                    },
-                  }}
-                >
-                  {shownProducts.map((product) => (
-                    <SwiperSlide key={product.id}>
-                      <article
-                        className="product-card"
-                        data-category={productGroup(product)}
-                      >
-                        <div className="product-image-wrapper">
-                          <img
-                            src={safeImage(
-                              product.imageUrl,
-                              "/theme/image10.jpeg",
-                            )}
-                            alt={product.name}
-                            loading="lazy"
-                          />
-                        </div>
-
-                        <div className="product-info">
-                          <h3>{product.name}</h3>
-
-                          <p>
-                            {product.shortDescription ||
-                              product.description ||
-                              "High-quality label solutions for your application."}
-                          </p>
-                        </div>
-                      </article>
-                    </SwiperSlide>
-                  ))}
-
-                  {shownProducts.length === 0 && (
-                    <SwiperSlide>
-                      <p className="empty-content">
-                        No products are currently published.
+              {/* <div className="filters" aria-label="Filter products">
+                {[
+                  { value: "all", label: "All" },
+                  { value: "printed", label: "Printed Labels" },
+                  { value: "thermal", label: "Thermal Labels" },
+                  { value: "custom", label: "Custom Labels" },
+                ].map((filter) => (
+                  <button
+                    type="button"
+                    key={filter.value}
+                    className={`filter ${productFilter === filter.value ? "active" : ""}`}
+                    onClick={() => setProductFilter(filter.value)}
+                    aria-pressed={productFilter === filter.value}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div> */}
+              <div className="product-grid">
+                {shownProducts.map((product) => (
+                  <article
+                    className="product-card"
+                    data-category={productGroup(product)}
+                    key={product.id}
+                  >
+                    <img
+                      src={safeImage(product.imageUrl, "/theme/image10.jpeg")}
+                      alt={product.name}
+                      loading="lazy"
+                    />
+                    <div className="product-info">
+                      <h3>{product.name}</h3>
+                      <p>
+                        {product.shortDescription ||
+                          product.description ||
+                          "High-quality label solutions for your application."}
                       </p>
-                    </SwiperSlide>
-                  )}
-                </Swiper>
-                <button
-                  type="button"
-                  className="products-next"
-                  aria-label="Next products"
-                >
-                  <ChevronRight size={22} strokeWidth={2} />
-                </button>
+                    </div>
+                  </article>
+                ))}
+                {shownProducts.length === 0 && (
+                  <p className="empty-content">
+                    No products are currently published in this category.
+                  </p>
+                )}
               </div>
             </div>
           </section>
@@ -962,19 +903,21 @@ export function HomePage({ data }: Props) {
                     requirements and our team can follow up.
                   </p>
                 )}
-                {socialLinks.map(({ label, href, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    title={label}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-                  >
-                    <Icon size={20} />
-                  </a>
-                ))}
+                <div className="social-links">
+                  {socialLinks.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      title={label}
+                      className={`social-app-icon social-${label.toLowerCase()}`}
+                    >
+                      <Icon size={20} />
+                    </a>
+                  ))}
+                </div>
               </aside>
             </div>
           </section>

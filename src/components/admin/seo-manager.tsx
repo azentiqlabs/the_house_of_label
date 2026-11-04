@@ -42,8 +42,8 @@ const standardPages = [
     path: "/",
     label: "Home page",
     description: "Your main business and product introduction.",
-    title: "Printed & Custom Label Manufacturer",
-    meta: "The House Of Label provides printed, unprinted and thermal label solutions for product packaging, barcodes, shipping and identification applications.",
+    title: "The House Of Label | Custom Label Printing in Sanaswadi",
+    meta: "The House Of Label provides custom printed product, packaging, personal care, thermal and barcode label solutions in Sanaswadi, Maharashtra. Contact us for label printing enquiries.",
   },
 ];
 
@@ -473,7 +473,7 @@ export function SeoManager() {
                   maxLength={70}
                   value={draft.title}
                   onChange={(event) => update("title", event.target.value)}
-                  placeholder="Example: Printed Labels Manufacturer in India"
+                  placeholder="Example: Custom Label Printing in Sanaswadi"
                 />
                 <small>
                   Use a clear title that describes this page. Around 50–60

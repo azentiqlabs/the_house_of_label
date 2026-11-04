@@ -3,26 +3,30 @@ import "./globals.css";
 import "./theme.css";
 import { siteConfig } from "@/lib/site";
 
+const homeTitle =  "The House Of Label | Custom Label Printing in Sanaswadi, Maharashtra";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `The House Of Label | Custom Label Printer in Sanaswadi, Maharashtra`,
+    default: homeTitle,
     template: `%s | ${siteConfig.name}`,
   },
+  applicationName: siteConfig.name,
   description: siteConfig.description,
-  // Meta keywords are included for completeness, but Google does not use this
-  // tag as a ranking signal. Keep the terms relevant and avoid keyword stuffing.
   keywords: [
     "The House Of Label",
-    "The House Of Label",
-    "The House Of Label official website",
-    "custom label printer Sanaswadi",
-    "custom printed labels Maharashtra",
+    "The House Of Label Sanaswadi",
+    "label printing Sanaswadi",
+    "custom label printing Maharashtra",
+    "printed product labels",
     "product packaging labels",
     "thermal labels",
     "barcode labels",
     "QR code stickers",
   ],
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,
@@ -36,10 +40,23 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    locale: "en_IN",
     siteName: siteConfig.name,
-    title: `The House Of Label | Custom Label Printer in Sanaswadi, Maharashtra`,
+    title: homeTitle,
     description: siteConfig.description,
     url: siteConfig.url,
+    images: [
+      {
+        url: "/theme/THE_HOUSE_OF_LABEL_LOGO02.png",
+        alt: "The House Of Label logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeTitle,
+    description: siteConfig.description,
+    images: ["/theme/THE_HOUSE_OF_LABEL_LOGO02.png"],
   },
 };
 

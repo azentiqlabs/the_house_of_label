@@ -14,12 +14,12 @@ function resolveSiteUrl(): string {
     const parsed = new URL(configured);
     const isLocal =
       parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
-    // A copied .env.example must never publish localhost as the production canonical host.
+    // Never publish a local development URL as the production canonical host.
     if (process.env.NODE_ENV === "production" && isLocal)
       return PRODUCTION_SITE_URL;
     if (
       process.env.NODE_ENV === "production" &&
-      parsed.hostname === "thehouseoflabel.com"
+      parsed.hostname.replace(/^www\./, "") === "thehouseoflabel.com"
     ) {
       return PRODUCTION_SITE_URL;
     }
@@ -32,8 +32,15 @@ function resolveSiteUrl(): string {
 export const siteConfig = {
   name: "The House Of Label",
   description:
-    "The House Of Label is a custom label printing business in Sanaswadi, Maharashtra, India, offering printed product packaging labels, personal care labels, QR code stickers, thermal labels, barcode labels, shipping labels, and identification labels.",
+    "The House Of Label is a label printing business based at L & T Phata, Bharat Gass Road, Sanaswadi, Maharashtra 412208, India. Explore custom printed product labels, packaging labels, personal care labels, thermal labels, barcode labels and QR code stickers.",
   url: resolveSiteUrl(),
+  address: {
+    streetAddress: "L & T Phata, Bharat Gass Road",
+    addressLocality: "Sanaswadi",
+    addressRegion: "Maharashtra",
+    postalCode: "412208",
+    addressCountry: "IN",
+  },
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 };
 

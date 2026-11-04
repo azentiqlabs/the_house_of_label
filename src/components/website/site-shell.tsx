@@ -21,34 +21,39 @@ function toAbsoluteUrl(value?: string): string | undefined {
 
 export async function SiteShell({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings();
-  const name = cleanSetting(settings.site_name) || siteConfig.name;
+  const name = siteConfig.name;
   const email = cleanSetting(settings.contact_email);
   const phone = cleanSetting(settings.contact_phone);
-  const address = cleanSetting(settings.contact_address);
   const logo = toAbsoluteUrl(
     cleanSetting(settings.site_logo_url) ||
       "/theme/THE_HOUSE_OF_LABEL_LOGO02.png",
   );
 
-  // Business profile details supplied by the owner. Do not add guessed phone,
+  // Use only owner-confirmed business details. Do not invent phone numbers,
   // opening hours, coordinates, ratings, or review markup.
   const organization = {
-    "@type": ["Organization", "LocalBusiness"],
-    "@id": `${siteConfig.url}/#organization`,
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.url}/#localbusiness`,
     name,
-    alternateName: "The House Of Label",
     url: siteConfig.url,
-    description:
-      "Custom label printer providing printed label solutions. Located at L & T Phata, Bharat Gass Road, Sanaswadi, Maharashtra 412208, India.",
+    description: siteConfig.description,
     ...(logo ? { logo, image: logo } : {}),
     address: {
       "@type": "PostalAddress",
-      streetAddress: "L & T Phata, Bharat Gass Road",
-      addressLocality: "Sanaswadi",
-      addressRegion: "Maharashtra",
-      postalCode: "412208",
-      addressCountry: "IN",
+      ...siteConfig.address,
     },
+    areaServed: [
+      { "@type": "City", name: "Sanaswadi" },
+      { "@type": "AdministrativeArea", name: "Maharashtra" },
+    ],
+    knowsAbout: [
+      "Custom label printing",
+      "Printed product labels",
+      "Packaging labels",
+      "Thermal labels",
+      "Barcode labels",
+      "QR code stickers",
+    ],
     ...(email || phone
       ? {
           contactPoint: [
@@ -72,7 +77,7 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
         "@id": `${siteConfig.url}/#website`,
         url: siteConfig.url,
         name,
-        publisher: { "@id": `${siteConfig.url}/#organization` },
+        publisher: { "@id": `${siteConfig.url}/#localbusiness` },
         inLanguage: "en-IN",
       },
     ],

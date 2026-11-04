@@ -157,7 +157,7 @@ export default async function DashboardPage() {
     <div className="hol-dashboard">
       <section className="hol-dashboard-hero">
         <div className="hol-dashboard-hero-copy">
-          <div className="hol-eyebrow">THE HOUSE OF LABELS · ADMIN</div>
+          <div className="hol-eyebrow">THE HOUSE OF LABEL · ADMIN</div>
           <h1>Your website, all in one place.</h1>
           <p>
             Keep your product catalogue, brand imagery, website pages and

@@ -7,14 +7,13 @@ import { siteConfig } from "@/lib/site";
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomeData();
   const hero = data.sections.home_hero;
+
   return getManagedMetadata("/", {
     title:
       hero?.seoTitle?.trim() ||
-      "The House Of Label | Custom Label Printer in Sanaswadi",
+      "The House Of Label | Custom Label Printing in Sanaswadi, Maharashtra",
     description:
-      hero?.seoDescription?.trim() ||
-      hero?.description ||
-      siteConfig.description,
+      hero?.seoDescription?.trim() || siteConfig.description,
     image: hero?.imageUrl,
     canonical: "/",
   });
@@ -22,42 +21,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function WebsiteHomePage() {
   const data = await getHomeData();
-  const businessSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${siteConfig.url}/#website`,
-        name: "The House Of Label",
-        url: `${siteConfig.url}/`,
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${siteConfig.url}/#business`,
-        name: "The House Of Label",
-        url: `${siteConfig.url}/`,
-        description: siteConfig.description,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "L & T Phata, Bharat Gass Road",
-          addressLocality: "Sanaswadi",
-          addressRegion: "Maharashtra",
-          postalCode: "412208",
-          addressCountry: "IN",
-        },
-      },
-    ],
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(businessSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <HomePage data={data} />
-    </>
-  );
+  return <HomePage data={data} />;
 }

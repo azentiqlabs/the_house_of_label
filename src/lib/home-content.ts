@@ -70,10 +70,10 @@ export type HomeData = {
 const defaultSections: HomeSection[] = [
   {
     sectionKey: "home_hero",
-    title: "Reliable|Label Solutions|for Every Industry",
+    title: "The House Of Label|Custom Label Printing|in Sanaswadi",
     subtitle: "Your trusted label partner",
     description:
-      "High-quality unprinted and printed labels engineered for performance, precision and premium packaging.",
+      "Custom printed label solutions for product identification, packaging and branding, delivered with precision and consistent quality.",
     imageUrl: "/theme/image15.png",
     buttonText: "Request a Quote",
     buttonUrl: "#contact",
@@ -124,7 +124,7 @@ const defaultSections: HomeSection[] = [
     title: "About The House Of Label",
     subtitle: "Who we are",
     description:
-      "The House Of Label is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.",
+      "The House Of Label provides custom label printing solutions for product identification, packaging and branding across a range of industries.",
     imageUrl: "/theme/image2.jpeg",
     buttonText: "Learn More",
     buttonUrl: "#what-we-do",
@@ -221,7 +221,7 @@ const defaultSections: HomeSection[] = [
     title: "Our Products",
     subtitle: "Explore our range",
     description:
-      "We manufacture and supply a wide range of label solutions for diverse applications.",
+      "We provide printed label solutions for diverse products, packaging and business applications.",
     status: "PUBLISHED",
     sortOrder: 16,
   },
@@ -323,7 +323,7 @@ const defaultSettings: Record<string, string> = {
   whatsapp_number: "",
   contact_phone: "+91 XXXXX XXXXX (demo)",
   contact_email: "info@thehouseoflabels.example",
-  contact_address: "Business address to be added\nCity, State, PIN (demo)",
+  contact_address: "L & T Phata, Bharat Gass Road, Sanaswadi, Maharashtra 412208, India",
   footer_note: "All rights reserved.",
   nav_home: "Home",
   nav_about: "About Us",

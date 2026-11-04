@@ -7,10 +7,10 @@ const PUBLISHED = "PUBLISHED" as const;
 const sections = [
   {
     sectionKey: "home_hero",
-    title: "Reliable|Label Solutions|for Every Industry",
+    title: "The House Of Label|Custom Label Printing|in Sanaswadi",
     subtitle: "Your trusted label partner",
     description:
-      "High-quality unprinted and printed labels engineered for performance, precision and premium packaging.",
+      "Custom printed label solutions for product identification, packaging and branding, delivered with precision and consistent quality.",
     imageUrl: "/theme/image15.png",
     buttonText: "Request a Quote",
     buttonUrl: "#contact",
@@ -55,7 +55,7 @@ const sections = [
     title: "About The House Of Label",
     subtitle: "Who we are",
     description:
-      "The House Of Label is a specialized label manufacturing company delivering high-quality unprinted and printed label solutions for diverse packaging applications across industries.",
+      "The House Of Label provides custom label printing solutions for product identification, packaging and branding across a range of industries.",
     imageUrl: "/theme/image2.jpeg",
     buttonText: "Learn More",
     buttonUrl: "#what-we-do",
@@ -142,7 +142,7 @@ const sections = [
     title: "Our Products",
     subtitle: "Explore our range",
     description:
-      "We manufacture and supply a wide range of label solutions for diverse applications.",
+      "We provide printed label solutions for diverse products, packaging and business applications.",
     sortOrder: 16,
   },
   {
@@ -235,7 +235,7 @@ const settingEntries: Array<[string, string]> = [
   ["contact_email", "houseoflabel2026@gmail.com"],
   [
     "contact_address",
-    "A/P- Sanaswadi, L&T phata bharat gas road,\nTal - shirur , Dist - Pune.\n412208",
+    "L & T Phata, Bharat Gass Road, Sanaswadi, Maharashtra 412208, India",
   ],
   ["footer_note", "All rights reserved."],
   ["nav_home", "Home"],

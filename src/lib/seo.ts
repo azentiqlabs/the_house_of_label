@@ -25,41 +25,48 @@ export function buildMetadata(
   });
 }
 
+function normalizeBrandName(value: string): string {
+  return value.replace(/the house of labels/gi, siteConfig.name);
+}
+
 function buildMetadataValues(values: SeoFallback): Metadata {
+  const cleanTitle = normalizeBrandName(values.title.trim());
   const fullTitle =
-    values.title === siteConfig.name
-      ? values.title
-      : `${values.title} | ${siteConfig.name}`;
-  const image = values.image || undefined;
+    cleanTitle.toLowerCase() === siteConfig.name.toLowerCase() ||
+    cleanTitle.toLowerCase().includes(siteConfig.name.toLowerCase())
+      ? cleanTitle
+      : `${cleanTitle} | ${siteConfig.name}`;
+  const image = values.image || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
+  const canonical = values.canonical || "/";
+
   return {
     title: { absolute: fullTitle },
-    description: values.description,
+    description: normalizeBrandName(values.description),
     metadataBase: new URL(siteConfig.url),
-    alternates: { canonical: values.canonical || "/" },
+    alternates: { canonical },
     robots: values.noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },
     openGraph: {
       title: fullTitle,
-      description: values.description,
+      description: normalizeBrandName(values.description),
       siteName: siteConfig.name,
       type: "website",
-      url: values.canonical,
-      images: image ? [image] : undefined,
+      url: canonical,
+      images: [image],
     },
     twitter: {
-      card: image ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: fullTitle,
-      description: values.description,
-      images: image ? [image] : undefined,
+      description: normalizeBrandName(values.description),
+      images: [image],
     },
   };
 }
 
 /**
- * Loads a page's editable SEO settings at request time. The SEO admin screen
- * stores one record per public route; when no record exists, route defaults
- * supplied by the page are used instead.
+ * Loads editable SEO settings for a public route. The configured brand spelling
+ * is normalized so legacy CMS entries cannot publish a plural brand variant.
  */
 export async function getManagedMetadata(
   routePath: string,
@@ -83,8 +90,6 @@ export async function getManagedMetadata(
         description: record.description || fallback.description,
         image: record.ogImageUrl || fallback.image,
         canonical: record.canonicalUrl || fallback.canonical || routePath,
-        // A page-level noIndex flag is a safety override: SEO records must not
-        // accidentally make an explicitly hidden product indexable.
         noIndex: Boolean(record.noIndex || fallback.noIndex),
       });
     }

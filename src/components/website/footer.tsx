@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 type Props = { settings: Record<string, string> };
 
 export function Footer({ settings }: Props) {
-  const siteName = settings.site_name || "The House Of Label";
+  const siteName = siteConfig.name;
   const note = settings.footer_note || "All rights reserved.";
   const logo = settings.site_logo_url || "/theme/THE_HOUSE_OF_LABEL_LOGO02.png";
 
